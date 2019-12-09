@@ -10,21 +10,28 @@ import { Company } from 'src/app/models/company.model';
 })
 export class RegisterComponent implements OnInit {
   makerCheck: boolean = true;
-  modelMaker: Maker = new Maker(0,"","");
-  modelCompany: Company = new Company();
+  modelMaker: Maker = new Maker(0,"","",null,"","","","","","");
+  modelCompany: Company = new Company(0,"","","","","","");
 
   registerFormMaker = this.fb.group({
     email: ['', Validators.required],
-    username: ['', Validators.required],
+    first: ['', Validators.required],
+    last: ['', Validators.required],
     password: ['', Validators.required],
-    cpassword: ['', Validators.required]
+    cpassword: ['', Validators.required],
+    phonenumber: ['', Validators.required],
+    date: ['', Validators.required],
+    linkedin: ['', Validators.required],
+    experience: ['', Validators.required]
   }, { validator: this.matchingPasswords('password', 'cpassword') });
 
   registerFormCompany = this.fb.group({
     email: ['', Validators.required],
-    username: ['', Validators.required],
+    name: ['', Validators.required],
     password: ['', Validators.required],
-    cpassword: ['', Validators.required]
+    cpassword: ['', Validators.required],
+    phonenumber: ['', Validators.required],
+    address: ['', Validators.required]
   }, { validator: this.matchingPasswords('password', 'cpassword') });
 
   constructor(private fb: FormBuilder) { }

@@ -58,13 +58,14 @@
         </p>
         <p>
             <mat-form-field>
-                <textarea matInput placeholder="Ervaring" formControlName="ervaring" [(ngModel)]="modelMaker.ervaring"
-                    type="text" name="Ervaring"></textarea>
+                <textarea matInput placeholder="Experience" formControlName="experience"
+                    [(ngModel)]="modelMaker.experience" type="text" name="Experience"></textarea>
             </mat-form-field>
         </p>
 
         <p>
-            <button [disabled]="!registerForm.valid" mat-raised-button color="primary" type="submit">Submit</button>
+            <button [disabled]="!registerFormMaker.valid" mat-raised-button color="primary"
+                type="submit">Submit</button>
         </p>
     </form>
 
@@ -80,7 +81,7 @@
         <p>
             <mat-form-field>
                 <input matInput placeholder="Company name" formControlName="name" [(ngModel)]="modelCompany.name"
-                    type="text" name="FirstName" />
+                    type="text" name="name" />
             </mat-form-field>
         </p>
 
@@ -102,13 +103,14 @@
         </p>
         <p>
             <mat-form-field>
-                <input matInput placeholder="Address" formControlName="Address" [(ngModel)]="modelCompany.Address"
+                <input matInput placeholder="Address" formControlName="address" [(ngModel)]="modelCompany.Address"
                     type="text" name="Address" />
             </mat-form-field>
         </p>
 
         <p>
-            <button [disabled]="!registerForm.valid" mat-raised-button color="primary" type="submit">Submit</button>
+            <button [disabled]="!registerFormCompany.valid" mat-raised-button color="primary"
+                type="submit">Submit</button>
         </p>
     </form>
 </div>
