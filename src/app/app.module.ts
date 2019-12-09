@@ -8,13 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { LoginModule } from './login/login.module';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
 ];
-
 
 @NgModule({
   declarations: [
