@@ -12,8 +12,8 @@
             <div fxFlex="50%">
                 <p>
                     <mat-form-field>
-                        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelMaker.email"
-                            type="email" name="Email" />
+                        <input matInput placeholder="Username" formControlName="username"
+                            [(ngModel)]="modelMaker.username" type="text" name="username" />
                     </mat-form-field>
                 </p>
 
@@ -31,17 +31,27 @@
                 </p>
                 <p>
                     <mat-form-field>
-                        <input class="password" matInput placeholder="Password" formControlName="password" type="password"
-                            name="Password" />
+                        <input class="password" matInput placeholder="Password" formControlName="password"
+                            type="password" name="Password" />
                     </mat-form-field>
-  
+
                     <mat-form-field>
                         <input matInput placeholder="Confirm password" formControlName="cpassword" type="password"
                             name="CPassword" />
                     </mat-form-field>
                 </p>
+                <p>
+                    <button [disabled]="!registerFormMaker.valid" mat-raised-button color="primary"
+                        type="submit">Submit</button>
+                </p>
             </div>
             <div fxFlex="50%">
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelMaker.email"
+                            type="email" name="Email" />
+                    </mat-form-field>
+                </p>
                 <p>
                     <mat-form-field>
                         <input matInput placeholder="Phone number" formControlName="phonenumber"
@@ -50,7 +60,7 @@
                 </p>
                 <p>
                     <mat-form-field>
-                        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date"
+                        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date of Birth"
                             [(ngModel)]=modelMaker.doB>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
@@ -72,55 +82,54 @@
 
             </div>
         </div>
-        <p>
-            <button [disabled]="!registerFormMaker.valid" mat-raised-button color="primary"
-                type="submit">Submit</button>
-        </p>
+
     </form>
 
     <form *ngIf="!makerCheck" [formGroup]="registerFormCompany" (ngSubmit)="onSubmit()">
         <h1>Company</h1>
         <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
-                <div fxFlex="50%">
-        <p>
-            <mat-form-field>
-                <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelCompany.email"
-                    type="email" name="Email" />
-            </mat-form-field>
-        </p>
+            <div fxFlex="50%">
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelCompany.email"
+                            type="email" name="Email" />
+                    </mat-form-field>
+                </p>
 
-        <p>
-            <mat-form-field>
-                <input matInput placeholder="Company name" formControlName="name" [(ngModel)]="modelCompany.name"
-                    type="text" name="name" />
-            </mat-form-field>
-        </p>
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Company name" formControlName="name"
+                            [(ngModel)]="modelCompany.name" type="text" name="name" />
+                    </mat-form-field>
+                </p>
 
-        <p>
-            <mat-form-field>
-                <input matInput class="password" placeholder="Password" formControlName="password" type="password" name="Password" />
-            </mat-form-field>
+                <p>
+                    <mat-form-field>
+                        <input matInput class="password" placeholder="Password" formControlName="password"
+                            type="password" name="Password" />
+                    </mat-form-field>
 
-            <mat-form-field>
-                <input matInput placeholder="Confirm password" formControlName="cpassword" type="password"
-                    name="CPassword" />
-            </mat-form-field>
-        </p>
+                    <mat-form-field>
+                        <input matInput placeholder="Confirm password" formControlName="cpassword" type="password"
+                            name="CPassword" />
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="50%">
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Phone number" formControlName="phonenumber"
+                            [(ngModel)]="modelCompany.phonenumber" type="text" name="Phonenumber" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Address" formControlName="address"
+                            [(ngModel)]="modelCompany.Address" type="text" name="Address" />
+                    </mat-form-field>
+                </p>
+            </div>
         </div>
-        <div fxFlex="50%">
-        <p>
-            <mat-form-field>
-                <input matInput placeholder="Phone number" formControlName="phonenumber"
-                    [(ngModel)]="modelCompany.phonenumber" type="text" name="Phonenumber" />
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field>
-                <input matInput placeholder="Address" formControlName="address" [(ngModel)]="modelCompany.Address"
-                    type="text" name="Address" />
-            </mat-form-field>
-        </p>
-    </div></div>
         <p>
             <button [disabled]="!registerFormCompany.valid" mat-raised-button color="primary"
                 type="submit">Submit</button>

@@ -10,10 +10,11 @@ import { Company } from 'src/app/models/company.model';
 })
 export class RegisterComponent implements OnInit {
   makerCheck: boolean = true;
-  modelMaker: Maker = new Maker(0,"","",null,"","","","","","");
+  modelMaker: Maker = new Maker(0,"","","",null,"","","","","","");
   modelCompany: Company = new Company(0,"","","","","","");
 
   registerFormMaker = this.fb.group({
+    username: ['', Validators.required],
     email: ['', Validators.required],
     first: ['', Validators.required],
     last: ['', Validators.required],
