@@ -1,0 +1,83 @@
+<div class="content container">
+        <h2>Dashboard of {{name}}!</h2>
+    <div *ngIf="makerCheck">
+    
+        <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+            <div fxFlex="20%">
+                
+            </div>
+            <div fxFlex="30%"></div>
+            <div fxFlex="20%">
+                <div>
+                    <button (click)="goToNotification()" matBadge="{{notificationAmount}}" matBadgeSize="large"
+                        matBadgeColor="accent" matBadgePosition="after" mat-raised-button matBadgeOverlap="false"
+                        class="notbtn">Notifications</button></div>
+                <!-- <div> <button (click)="goToMessages()" matBadge="{{messageAmount}}" matBadgeSize="large"
+                    matBadgeColor="accent" matBadgePosition="after" mat-raised-button matBadgeOverlap="false"
+                    class="messagebtn">Messages</button></div> -->
+            </div>
+            <div fxFlex="30%"></div>
+        </div>
+        <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+            <div fxFlex="50%">
+                <h3>Open assignments</h3>
+                <div *ngIf="assignmentsLength==0">You have no assignments yet</div>
+                <div *ngFor="let assignment of (assignments | async)" class="padding">
+                    {{assignment.name}} |
+                    <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
+                        assignment</button> |
+                </div>
+            </div>
+            <div fxFlex="50%">
+                <h3>Applied assignments</h3>
+                <div *ngIf="appliedassignmentsLength==0">You have no assignments yet</div>
+                <div *ngFor="let assignment of (appliedassignments | async)" class="padding">
+                    {{assignment.name}} |
+                    <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
+                        assignment</button> |
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!makerCheck">
+        
+        <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+            <div fxFlex="20%">
+            
+            </div>
+            <div fxFlex="30%"></div>
+            <div fxFlex="20%">
+                <div>
+                    <button (click)="gotToNotification()" matBadge="{{notificationAmount}}" matBadgeSize="large"
+                        matBadgeColor="accent" matBadgePosition="after" mat-raised-button matBadgeOverlap="false"
+                        class="notbtn">Notifications</button></div>
+                <!-- <div> <button (click)="goToMessages()" matBadge="{{messageAmount}}" matBadgeSize="large"
+                    matBadgeColor="accent" matBadgePosition="after" mat-raised-button matBadgeOverlap="false"
+                    class="messagebtn">Messages</button></div> -->
+            </div>
+            <div fxFlex="30%"></div>
+
+        </div>
+        <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+            <div fxFlex="50%">
+                <h3>Created assignments</h3>
+                <div *ngIf="assignmentsLength==0">You have no assignments yet</div>
+                <div *ngFor="let assignment of (assignments | async)" class="padding">
+                    {{assignment.name}} |
+                    <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
+                        assignment</button> |
+                </div>
+            </div>
+            <div fxFlex="50%">
+                <h3>Ongoing assignments</h3>
+                <div *ngIf="appliedassignmentsLength==0">You have no assignments yet</div>
+                <div *ngFor="let assignment of (appliedassignments | async)" class="padding">
+                    {{assignment.name}} |
+                    <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
+                        assignment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

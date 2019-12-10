@@ -1,0 +1,23 @@
+<div class="content container">
+    <h1 class="titel">Notifications</h1>
+    <h2>Maker</h2>
+    <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+
+        <div fxFlex="50%">
+            <h3>Notifications</h3>
+            <div *ngIf="notificationLength == 0"> You have no notifications</div>
+            <div class="padding" *ngFor="let notification of (notifications | async)">
+                <p>You application for Assignment has been accepted</p>
+            </div>
+        </div>
+        <div fxFlex="50%">
+            <h2>Sent applications</h2>
+            <div *ngIf="sentLength == 0"> You have no unanswered sent invites</div>
+
+            <div *ngFor="let invite of (sentinvites | async)" class="padding">
+                <button mat-button class="deletebtn" (click)="deleteNotification(invite.notificationId)">Delete</button>
+                {{invite.type}}invitation to {{invite.receiverName}}</div>
+        </div>
+
+    </div>
+</div>
