@@ -17,6 +17,9 @@ import { AssignmentModule } from './assignment/assignment.module';
 import { OverviewComponent } from './profile/overview/overview.component'
 import { SearchAssignmentComponent } from './assignment/search-assignment/search-assignment.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AssignmentModule } from './assignment/assignment.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SecurityInterceptor } from './security.interceptor';
 
 
 const appRoutes: Routes = [
@@ -45,9 +48,14 @@ const appRoutes: Routes = [
     SharedModule,
     AssignmentModule,
     HttpClientModule,
+    AssignmentModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: SecurityInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
