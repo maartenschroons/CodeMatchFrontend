@@ -36,6 +36,17 @@ export class AppService {
 
   //dashboard
 
+  getUser(userID: number): any {
+    return this.http.get<User>("https://localhost:5001/api/Users/" + userID);
+  }
+
+  getAllInitialAssignmentsByCompany(companyId: number): Observable<Assignment[]>{
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/initial/company/"+companyId);
+  }
+
+  getAllInProgressAssignmentsByCompany(companyId: number): Observable<Assignment[]>{
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/inProgress/company/"+companyId);
+  }
   //Assignments
   getAllAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");

@@ -16,14 +16,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityInterceptor } from './security.interceptor';
 import { AssignmentModule } from './assignment/assignment.module';
+import { NotificationComponent } from './notification/notification.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: OverviewComponent },
-  { path: 'searchAssignment', component: SearchAssignmentComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'notification', component: NotificationComponent},
+  { path: 'profile', component: OverviewComponent},
+  { path: 'searchAssignment', component: SearchAssignmentComponent},
 ];
 
 @NgModule({
