@@ -18,8 +18,6 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   })
 
-
-  
   constructor(private fb: FormBuilder, private _authenticateService: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
@@ -32,9 +30,9 @@ export class LoginComponent implements OnInit {
 
       localStorage.setItem("token", result.token);
       //Dit is hoe je data uit de token haalt
-      var decoded = jwt_decode(localStorage.getItem("token"));
-      var userID = decoded["UserID"];
-      console.log(decoded);
+      // var decoded = jwt_decode(localStorage.getItem("token"));
+      // var userID = decoded["UserID"];
+      // console.log(decoded);
       this.router.navigateByUrl('/dashboard');
     
     });

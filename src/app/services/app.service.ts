@@ -11,6 +11,10 @@ export class AppService {
 
   constructor(private http: HttpClient) { }
 
+  getUserByIdAndRol(id: number) {
+    return this.http.get<User>("https://localhost:5001/api/Users/user/info/" + id)
+  }
+
   //register
   checkMail(mail: string) {
     return this.http.get<boolean>("https://localhost:5001/api/users/checkMail?mail=" + mail)
