@@ -11,7 +11,6 @@ import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
 import { OverviewComponent } from './profile/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AssignmentModule } from './assignment/assignment.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityInterceptor } from './security.interceptor';
 
