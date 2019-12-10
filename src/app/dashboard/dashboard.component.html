@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div fxFlex="50%">
-                <h3>Applied assignments</h3>
+                <h3>Completed assignments</h3>
                 <div *ngIf="appliedassignmentsLength==0">You have no assignments yet</div>
                 <div *ngFor="let assignment of (appliedassignments | async)" class="padding">
                     {{assignment.name}} |
@@ -64,9 +64,9 @@
                 <h3>Created assignments</h3>
                 <div *ngIf="assignmentsLength==0">You have no assignments yet</div>
                 <div *ngFor="let assignment of (assignments | async)" class="padding">
-                    {{assignment.name}} |
-                    <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
-                        assignment</button> |
+                        {{assignment.name}} |
+                        <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
+                            assignment</button>
                 </div>
             </div>
             <div fxFlex="50%">

@@ -9,9 +9,4 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
-
-  getUser(userID: number): any {
-    return this.http.get<User>("https://localhost:5001/api/Users/" + userID);
-  }
 }

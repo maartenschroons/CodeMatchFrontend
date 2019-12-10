@@ -17,18 +17,17 @@ import { AssignmentModule } from './assignment/assignment.module';
 import { OverviewComponent } from './profile/overview/overview.component'
 import { SearchAssignmentComponent } from './assignment/search-assignment/search-assignment.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AssignmentModule } from './assignment/assignment.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityInterceptor } from './security.interceptor';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'notification', component: NotificationComponent },
-  { path: 'profile', component: OverviewComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'notification', component: NotificationComponent},
+  { path: 'profile', component: OverviewComponent},
   { path: 'searchAssignment', component: SearchAssignmentComponent},
 ];
 
