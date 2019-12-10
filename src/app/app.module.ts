@@ -13,7 +13,6 @@ import { SearchAssignmentComponent } from './assignment/search-assignment/search
 import { ProfileModule } from './profile/profile.module';
 import { OverviewComponent } from './profile/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AssignmentModule } from './assignment/assignment.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityInterceptor } from './security.interceptor';
 

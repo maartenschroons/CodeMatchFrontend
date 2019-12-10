@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Maker } from '../models/maker.model';
 import { User } from '../models/user.model';
 import { Company } from '../models/company.model';
+import { Assignment } from '../models/assignment.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +35,9 @@ export class AppService {
   }
 
   //dashboard
+
+  //Assignments
+  getAllAssignments(): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
+  }
 }
