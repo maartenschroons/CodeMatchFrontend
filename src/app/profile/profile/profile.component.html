@@ -1,1 +1,53 @@
-<p>profile works!</p>
+<div class="mt-4 d-inline-flex">
+    <div class="card" style="width: 28%;">
+        <img src="../../../assets/images/logo_transparent.png" alt="profile picture" class="card-img-top">
+        <div class="card-body border-top">
+            <div class="card-text">
+                <div class="font-weight-bold text-center">
+                    {{user.maker.firstname}} {{user.maker.lastname}}
+                </div>
+                <br>
+                <div>
+                    <div class="font-weight-bold ">
+                        Biography
+                    </div>
+                    {{user.biography}}
+                </div>
+                <br>
+                <div>
+                    <div class="font-weight-bold ">
+                        Experience
+                    </div>
+                    {{user.maker.experience}}
+                </div>
+                <br>
+                <div>
+                    <div class="font-weight-bold ">
+                        Contact details
+                    </div>
+                    <div>
+                        <span class="h6">Email:</span> <br>
+                        {{user.email}}
+                    </div>
+                    <br>
+                    <div>
+                        <span class="h6">Phonenumber:</span> <br>
+                        {{user.phonenumber}}
+                    </div>
+                    <br>
+                    <div>
+                        <span class="h6">LinkedIn:</span> <br>
+                        {{user.maker.linkedIn}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 70%" class="ml-4">
+        <app-profile-edit></app-profile-edit>
+    </div>
+</div>
+
+
+
+{{user | json}}

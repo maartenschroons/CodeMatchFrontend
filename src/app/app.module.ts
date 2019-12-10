@@ -15,6 +15,7 @@ import { OverviewComponent } from './profile/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityInterceptor } from './security.interceptor';
+import { AssignmentModule } from './assignment/assignment.module';
 
 
 const appRoutes: Routes = [
@@ -36,7 +37,6 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    AssignmentModule,
     ProfileModule,
     HttpClientModule,
     AssignmentModule,

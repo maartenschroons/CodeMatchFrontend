@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user.model';
-import { decode } from 'punycode';
 import * as jwt_decode from 'jwt-decode';
 
 @Component({
@@ -22,7 +21,6 @@ export class ProfileComponent implements OnInit {
 
     this._appService.getUserByIdAndRol(this.userId).subscribe(result => {
       this.user = result;
-      console.log(this.user);
     })
 
     
