@@ -24,12 +24,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this._authenticateService.authenticate(this.model).subscribe(result => {
-      console.log(result);
       localStorage.setItem("token", result.token);
-      // localStorage.setItem("userId", result.userId.toString());
-      // localStorage.setItem("loggedIn", "true");
-      this.router.navigateByUrl('/');
-      
+      this.router.navigateByUrl('/dashboard');
     });
     
   }

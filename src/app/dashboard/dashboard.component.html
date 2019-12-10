@@ -1,0 +1,29 @@
+<div class="content container">
+
+    <h1 class="titel">Dashboard</h1>
+
+    <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+        <div fxFlex="20%">
+            <h2>Dashboard of maker {{name}}!</h2>
+        </div>
+        <div fxFlex="30%"></div>
+        <div fxFlex="20%">
+            <button (click)="gotToNotification()" matBadge="{{notificationAmount}}" matBadgeSize="large" matBadgeColor="accent"
+                matBadgePosition="after" mat-raised-button matBadgeOverlap="false" class="notbtn">Notifications</button>
+        </div>
+        <div fxFlex="30%"></div>
+
+    </div>
+    <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+        <div fxFlex="50%">
+            <h3>Open assignments</h3>
+            <div *ngFor="let assignment of (assignments | async)" class="padding">
+                {{assignment.name}}  |
+                <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the assignment</button> |   
+        </div>
+        </div>
+        <div fxFlex="50%">
+           <h3></h3>
+        </div>
+    </div>
+</div>
