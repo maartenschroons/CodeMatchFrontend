@@ -9,13 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NotificationComponent } from './notification/notification.component';
-import { AssignmentModule } from './assignment/assignment.module';
-
-import { OverviewComponent } from './profile/overview/overview.component'
-import { SearchAssignmentComponent } from './assignment/search-assignment/search-assignment.component';
+import { OverviewComponent } from './profile/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AssignmentModule } from './assignment/assignment.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -26,10 +20,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'notification', component: NotificationComponent },
-  { path: 'profile', component: OverviewComponent },
-  { path: 'searchAssignment', component: SearchAssignmentComponent},
+  { path: 'profile', component: OverviewComponent }
 ];
 
 @NgModule({
@@ -38,8 +29,6 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent,
-    NotificationComponent,
     OverviewComponent
   ],
   imports: [
