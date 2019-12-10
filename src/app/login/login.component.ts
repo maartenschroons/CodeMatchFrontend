@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     username: ['', Validators.required],
     password: ['', Validators.required]
   })
-  
+
 
   constructor(private fb: FormBuilder, private _authenticateService: AuthenticateService, private router: Router) { }
 
@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this._authenticateService.authenticate(this.model).subscribe(result => {
       localStorage.setItem("token", result.token);
+      localStorage.setItem("userId", result.userID+"")
       this.router.navigateByUrl('/dashboard');
     });
-    
   }
 }
