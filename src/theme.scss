@@ -2,7 +2,7 @@
 
 @include mat-core(); //includes the common styles for Angular Material
 
-$helloworld-app-primary: mat-palette(#0055ff); //color palette for primary
+$helloworld-app-primary: mat-palette($mat-light-blue, A200); //color palette for primary
 $helloworld-app-accent: mat-palette($mat-orange); //color palette for accent
 $helloworld-app-warn: mat-palette($mat-red); //color palette for warn
 

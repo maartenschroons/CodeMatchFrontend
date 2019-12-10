@@ -20,6 +20,7 @@ appliedassignmentsLength: number =0;
 makerCheck: boolean = true;
 
   constructor(private router: Router, private _userService: UserService) { 
+    console.log(parseInt(localStorage.getItem("userId")));
     this.instantiateLists()
   }
 

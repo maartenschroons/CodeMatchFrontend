@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 
 
 @NgModule({
-  declarations: [LoginModule],
+  declarations: [
+    LoginModule
+  ],
   imports: [
     CommonModule
   ]
