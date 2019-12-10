@@ -16,6 +16,7 @@ import { AssignmentModule } from './assignment/assignment.module';
 
 import { OverviewComponent } from './profile/overview/overview.component'
 import { SearchAssignmentComponent } from './assignment/search-assignment/search-assignment.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -25,8 +26,7 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'notification', component: NotificationComponent },
   { path: 'profile', component: OverviewComponent },
-  { path: 'searchAssignment', component: SearchAssignmentComponent}
-
+  { path: 'searchAssignment', component: SearchAssignmentComponent},
 ];
 
 @NgModule({
@@ -44,6 +44,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     SharedModule,
     AssignmentModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
   providers: [],
