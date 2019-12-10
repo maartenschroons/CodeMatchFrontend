@@ -1,32 +1,33 @@
-<div class="content container">
-    <div>
-        <h1>Please log in to use this application, or register an account.</h1>
-    </div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<mat-card class="login-card">
+    <mat-card-title class="login-card-title">Login to continue</mat-card-title>
+
+    <form (ngSubmit)="onSubmit()">
+
+        <div class="login-container">
             <p>
                 <mat-form-field>
-                    <input matInput placeholder="Username" formControlName="username" [(ngModel)]="model.email"
-                        type="text" name="username" />
+                    <input matInput placeholder="Email" type="email" name="email" [(ngModel)]="gebruikerLogin.email" />
                 </mat-form-field>
             </p>
-            <!-- <p>
-                    <mat-form-field>
-                        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelMaker.email" type="email"
-                            name="Email" />
-                    </mat-form-field>
-                </p> -->
 
             <p>
                 <mat-form-field>
-                    <input matInput placeholder="Password" formControlName="password" [(ngModel)]="model.password"
-                        type="password" name="password" />
+                    <input matInput placeholder="Password" type="password" name="password"
+                        [(ngModel)]="gebruikerLogin.wachtwoord" />
                 </mat-form-field>
             </p>
-            <p>
-                <button mat-raised-button [disabled]="!loginForm.valid" class="loginbtn" type="submit">Log in</button>
-            </p>
-        </form>
 
-        <button mat-raised-button class="registerbtn" routerLink="/register" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">Register</button>
-    </div>
+
+            <mat-card-actions>
+                <div>
+                    <button mat-raised-button color="primary" class="login-card-button" type="submit">Login</button>
+                </div>
+                <div class="div-login-register-link">
+                    <a class="login-register-link" routerLink="/register" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Not registered yet? Click here!</a>
+                </div>
+            </mat-card-actions>
+
+        </div>
+    </form>
+</mat-card>

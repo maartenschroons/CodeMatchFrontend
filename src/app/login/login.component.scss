@@ -1,0 +1,38 @@
+.login-card {
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.login-card-title {
+    padding-bottom: 10px;
+}
+
+.login-card-button {
+    max-width: 300px;
+    border: black 1px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-actions button {
+    width: 100%;
+}
+
+.div-login-register-link {
+    margin-top: 10px;
+}
+
+.login-register-link {
+    color: gray;
+}

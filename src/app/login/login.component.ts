@@ -10,20 +10,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  model: UserLogin = new UserLogin("", "");
+
+  login: UserLogin = new UserLogin("", "");
   loginForm = this.fb.group({
-    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   })
   
-
   constructor(private fb: FormBuilder, private _authenticateService: AuthenticateService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    this._authenticateService.authenticate(this.model).subscribe(result => {
+    this._authenticateService.authenticate(this.login).subscribe(result => {
       console.log(result);
       localStorage.setItem("token", result.token);
       // localStorage.setItem("userId", result.userId.toString());
