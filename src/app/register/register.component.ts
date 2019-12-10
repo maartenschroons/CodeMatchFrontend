@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Maker } from 'src/app/models/maker.model';
 import { Company } from 'src/app/models/company.model';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,7 @@ export class RegisterComponent implements OnInit {
   makerCheck: boolean = true;
   modelMaker: Maker = new Maker(null, "", "", "", null, "", "", null, null);
   modelCompany: Company = new Company(null, "", null, null, null);
+  modelUser: User = new User(null, "", "", "", "", null, null, null, null, null, null, null)
 
   registerFormMaker = this.fb.group({
     username: ['', Validators.required],
@@ -21,6 +23,7 @@ export class RegisterComponent implements OnInit {
     password: ['', Validators.required],
     cpassword: ['', Validators.required],
     phonenumber: ['', Validators.required],
+    biography: ['', Validators.required],
     date: ['', Validators.required],
     linkedin: ['', Validators.required],
     experience: ['', Validators.required]
@@ -62,6 +65,7 @@ export class RegisterComponent implements OnInit {
     if(this.makerCheck)
     {
       console.log(this.modelMaker);
+      console.log(this.modelUser);
     }
   }
 
