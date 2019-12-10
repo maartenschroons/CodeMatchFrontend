@@ -9,11 +9,14 @@ import { RegisterComponent } from './register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
+import { SearchAssignmentComponent } from './assignment/search-assignment/search-assignment.component';
+import { AssignmentModule } from './assignment/assignment.module';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'searchAssignment', component: SearchAssignmentComponent}
 ];
 
 @NgModule({
@@ -27,6 +30,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    AssignmentModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
   providers: [],
