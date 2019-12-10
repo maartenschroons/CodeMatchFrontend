@@ -9,16 +9,15 @@ import { RegisterComponent } from './register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NotificationComponent } from './notification/notification.component';
-import { AssignmentModule } from './assignment/assignment.module';
-
-import { OverviewComponent } from './profile/overview/overview.component'
 import { SearchAssignmentComponent } from './assignment/search-assignment/search-assignment.component';
+import { ProfileModule } from './profile/profile.module';
+import { OverviewComponent } from './profile/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityInterceptor } from './security.interceptor';
+import { AssignmentModule } from './assignment/assignment.module';
+import { NotificationComponent } from './notification/notification.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
@@ -36,16 +35,13 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
-    DashboardComponent,
-    NotificationComponent,
-    OverviewComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    AssignmentModule,
+    ProfileModule,
     HttpClientModule,
     AssignmentModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false })
