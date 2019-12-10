@@ -1,3 +1,23 @@
+import { Assignment } from './assignment.model';
+import { User } from './user.model';
+
 export class Review {
-    constructor(public reviewID: number, public makerID: number, public bedrijfID: number, public reviewOmschrijving: string, public status: string){}
+    reviewID: number;
+    description: string;
+    assignment: Assignment;
+    userIDSender: number;
+    sender: User;
+    userIDReceiver: number;
+    receiver: User;
+    
+    constructor(reviewID: number, description: string, assignment: Assignment, userIDSender: number, sender: User, userIDReceiver: number, receiver: User)
+    {
+        this.reviewID = reviewID;
+        this.description = description;
+        this.assignment = assignment;
+        this.userIDSender =userIDSender;
+        this.sender = sender;
+        this.userIDReceiver = userIDReceiver;
+        this.receiver = receiver;
+    }
 }

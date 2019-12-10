@@ -13,7 +13,7 @@
                 <p>
                     <mat-form-field>
                         <input matInput placeholder="Username" formControlName="username"
-                            [(ngModel)]="modelMaker.username" type="text" name="username" />
+                            [(ngModel)]="modelMaker.nickname" type="text" name="username" />
                     </mat-form-field>
                 </p>
 
@@ -31,7 +31,13 @@
                 </p>
                 <p>
                     <mat-form-field>
-                        <input class="password" matInput placeholder="Password" formControlName="password"
+                        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelUser.email"
+                            type="email" name="Email" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <input class="password" matInput placeholder="Password" formControlName="password" [(ngModel)]="modelUser.password"
                             type="password" name="Password" />
                     </mat-form-field>
 
@@ -48,20 +54,14 @@
             <div fxFlex="50%">
                 <p>
                     <mat-form-field>
-                        <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelMaker.email"
-                            type="email" name="Email" />
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field>
                         <input matInput placeholder="Phone number" formControlName="phonenumber"
-                            [(ngModel)]="modelMaker.phonenumber" type="text" name="Phonenumber" />
+                            [(ngModel)]="modelUser.phonenumber" type="text" name="Phonenumber" />
                     </mat-form-field>
                 </p>
                 <p>
                     <mat-form-field>
                         <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date of Birth"
-                            [(ngModel)]=modelMaker.doB>
+                            [(ngModel)]=modelMaker.dob>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -70,6 +70,12 @@
                     <mat-form-field>
                         <input matInput placeholder="LinkedIn Link" formControlName="linkedin"
                             [(ngModel)]="modelMaker.linkedin" type="text" name="LinkedIn" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Biography" formControlName="biography"
+                            [(ngModel)]="modelUser.biography" type="text" name="Biography" />
                     </mat-form-field>
                 </p>
                 <p>
