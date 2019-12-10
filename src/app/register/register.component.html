@@ -20,13 +20,13 @@
                 <p>
                     <mat-form-field>
                         <input matInput placeholder="First name" formControlName="first"
-                            [(ngModel)]="modelMaker.firstName" type="text" name="FirstName" />
+                            [(ngModel)]="modelMaker.firstname" type="text" name="FirstName" />
                     </mat-form-field>
                 </p>
                 <p>
                     <mat-form-field>
-                        <input matInput placeholder="Last name" formControlName="last" [(ngModel)]="modelMaker.lastName"
-                            type="text" name="LastName" />
+                        <input matInput placeholder="Last name" formControlName="last" [(ngModel)]="modelMaker.lastname"
+                            type="text" name="Lastname" />
                     </mat-form-field>
                 </p>
                 <p>
@@ -45,10 +45,6 @@
                         <input matInput placeholder="Confirm password" formControlName="cpassword" type="password"
                             name="CPassword" />
                     </mat-form-field>
-                </p>
-                <p>
-                    <button [disabled]="!registerFormMaker.valid" mat-raised-button color="primary"
-                        type="submit">Submit</button>
                 </p>
             </div>
             <div fxFlex="50%">
@@ -69,7 +65,7 @@
                 <p>
                     <mat-form-field>
                         <input matInput placeholder="LinkedIn Link" formControlName="linkedin"
-                            [(ngModel)]="modelMaker.linkedin" type="text" name="LinkedIn" />
+                            [(ngModel)]="modelMaker.linkedIn" type="text" name="LinkedIn" />
                     </mat-form-field>
                 </p>
                 <p>
@@ -89,6 +85,12 @@
             </div>
         </div>
 
+        <div class="row">
+            <p class="ml-4">
+                <button [disabled]="!registerFormMaker.valid" mat-raised-button color="primary"
+                    type="submit">Submit</button>
+            </p>
+        </div>
     </form>
 
     <form *ngIf="!makerCheck" [formGroup]="registerFormCompany" (ngSubmit)="onSubmit()">
