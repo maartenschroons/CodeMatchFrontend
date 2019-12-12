@@ -1,5 +1,6 @@
 import { Directive, OnInit, ElementRef, TemplateRef, ViewContainerRef, Input } from '@angular/core';
 import { AppService } from '../../services/app.service';
+import { UserWithPermissions } from 'src/app/models/user-with-permissions.model';
 
 @Directive({
   selector: '[hasPermission]'
@@ -26,12 +27,9 @@ export class HasPermissionDirective implements OnInit{
   set hasPermission(val) {
     this.permissions = val;
     this.updateView();
-    console.log(val);
-    console.log(this.currentUser.permissions);
   }
 
   private updateView() {
-    console.log(this.checkPermission())
     if(this.checkPermission()) {
       if(this.isHidden) {
         this.viewContainer.createEmbeddedView(this.templateRef);
@@ -46,9 +44,9 @@ export class HasPermissionDirective implements OnInit{
   private checkPermission() {
     let hasPermission = false;
 
-    if(this.currentUser && this.currentUser.permissions) {
+    if(this.currentUser && this.currentUser.permission) {
       for (const checkPermission of this.permissions) {
-        const permissionFound = this.currentUser.permissions.find(x => x.toUpperCase() === checkPermission.toUpperCase());
+        const permissionFound = this.currentUser.permission.find(x => x.toUpperCase() === checkPermission.toUpperCase());
 
         if(permissionFound) {
           hasPermission = true;

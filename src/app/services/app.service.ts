@@ -9,6 +9,9 @@ import { UserWithPermissions } from '../models/user-with-permissions.model';
 import { Tag } from '../models/tag.model';
 import { ApplicationDto } from '../models/application-dto.model';
 
+import { UserDTO } from '../models/user-dto.model';
+import { MakerDTO } from '../models/maker-dto.model';
+import { CompanyDTO } from '../models/company-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +22,18 @@ export class AppService {
 
   getUserByIdAndRol(id: number) {
     return this.http.get<any>("https://localhost:5001/api/Users/user/info/" + id)
+  }
+
+  updateUser(id: number, user: UserDTO) {
+    return this.http.put("https://localhost:5001/api/Users/" + id, user);
+  }
+
+  updateMaker(id: number, maker: MakerDTO) {
+    return this.http.put("https://localhost:5001/api/Makers/" + id, maker);
+  }
+
+  updateCompany(id: number, company: CompanyDTO) {
+    return this.http.put("https://localhost:5001/api/Companies/" + id, company);
   }
 
   //register
