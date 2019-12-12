@@ -92,16 +92,17 @@ export class ProfileEditComponent implements OnInit {
 
     if(this.user.companyID) {
       let company = new CompanyDTO(this.user.companyID, this.editUserForm.get('companyname').value, this.editUserForm.get('streetaddress').value, this.editUserForm.get('postalcode').value)
-      this._appService.updateCompany(company.companyID, company).subscribe();
+      this._appService.updateCompany(company.companyID, company).subscribe(result => {
+        this._appService.setUpdateProfileAfterSave(true);
+      });
     }
 
     if(this.user.makerID) {
       let maker = new MakerDTO(this.user.makerID, this.editUserForm.get('firstname').value, this.editUserForm.get('lastname').value, this.editUserForm.get('nickname').value,
                   this.editUserForm.get('linkedin').value, this.editUserForm.get('experience').value, this.user.maker.dob)
-      this._appService.updateMaker(maker.makerID, maker).subscribe();
+      this._appService.updateMaker(maker.makerID, maker).subscribe(result => {
+        this._appService.setUpdateProfileAfterSave(true);
+      });
     }
-
-    this.ngOnInit();
   }
-
 }

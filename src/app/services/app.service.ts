@@ -21,6 +21,19 @@ export class AppService {
   gekozenAssignment = new BehaviorSubject(new Assignment(0, "", "", "", "", "", null, null, null, null));
   constructor(private http: HttpClient) { }
 
+  // behaviorSubjects
+  private userPermissionsSubject = new BehaviorSubject(new UserWithPermissions('', []));
+  userPermissions = this.userPermissionsSubject.asObservable();
+  setUserPermissions(userWithPermissions: UserWithPermissions) {
+    this.userPermissionsSubject.next(userWithPermissions);
+  }
+
+  private updateProfileAfterSaveSubject = new BehaviorSubject(false);
+  updateProfileAfterSave = this.updateProfileAfterSaveSubject.asObservable();
+  setUpdateProfileAfterSave(update: boolean) {
+    this.updateProfileAfterSaveSubject.next(update);
+  }
+
   getUserByIdAndRol(id: number) {
     return this.http.get<any>("https://localhost:5001/api/Users/user/info/" + id)
   }
@@ -105,12 +118,6 @@ export class AppService {
     return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
   }
 
-  // behaviorSubjects
-  private userPermissionsSubject = new BehaviorSubject(new UserWithPermissions('', []));
-  userPermissions = this.userPermissionsSubject.asObservable();
-  setUserPermissions(userWithPermissions: UserWithPermissions) {
-    this.userPermissionsSubject.next(userWithPermissions);
-  }
   //Tags
   getAllTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>("https://localhost:5001/api/tags");

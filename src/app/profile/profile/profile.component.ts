@@ -11,12 +11,18 @@ import { UserWithPermissions } from 'src/app/models/user-with-permissions.model'
 })
 export class ProfileComponent implements OnInit {
 
-  user: User = new User(null, '', '', '', '', null , null, null, null, null, null, null);
+  user: User = new User(null, '', '', '', '', null, null, null, null, null, null, null);
   userId: number;
   isLoaded: boolean = false;
   userWithPermissions: UserWithPermissions = new UserWithPermissions('', []);
 
-  constructor(private _appService: AppService) { }
+  constructor(private _appService: AppService) {
+    this._appService.updateProfileAfterSave.subscribe(result => {
+      if (result) {
+        this.ngOnInit();
+      }
+    })
+  }
 
   ngOnInit() {
     let decodedToken = jwt_decode(localStorage.getItem('token'));
@@ -32,8 +38,6 @@ export class ProfileComponent implements OnInit {
       });
       this._appService.setUserPermissions(this.userWithPermissions);
     })
-
-    
   }
 
 }
