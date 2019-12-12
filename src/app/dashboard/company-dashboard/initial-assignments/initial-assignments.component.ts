@@ -15,7 +15,7 @@ export class InitialAssignmentsComponent implements OnInit {
   assignmentsLength: number;
   decoded;
   companyID: number;
-  
+
   constructor(private router: Router, private _appService: AppService) {
     this.instantiateLists()
   }
@@ -24,7 +24,7 @@ export class InitialAssignmentsComponent implements OnInit {
     this.companyID = this.decoded["CompanyID"];
 
     this.assignments = this._appService.getAllInitialAssignmentsByCompany(this.companyID);
-    this.assignments.subscribe(result => { this.assignmentsLength = result.length});
+    this.assignments.subscribe(result => { this.assignmentsLength = result.length });
   }
 
 
@@ -35,6 +35,6 @@ export class InitialAssignmentsComponent implements OnInit {
     //console.log(assignment);
     this._appService.gekozenAssignment.next(assignment);
     this.router.navigate(["detailAssignment"]);
- }
+  }
 
 }
