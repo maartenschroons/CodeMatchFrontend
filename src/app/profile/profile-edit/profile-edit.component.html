@@ -4,20 +4,28 @@
             <div class="row">
                 <div class="col-lg-6 border-right">
 
-                    <div class="h2" *hasPermission="['update_maker_profile']">
-                        test
-                    </div>
-
-                    <div class="form-group">
+                    <div class="form-group" *hasPermission="['update_maker_profile']">
                         <label for="nickname">Nickname</label>
                         <input type="text" class="form-control" name="nickname" formControlName="nickname"
                             id="nickname">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *hasPermission="['update_company_profile']">
+                        <label for="companyname">Company name</label>
+                        <input type="text" class="form-control" name="companyname" formControlName="companyname"
+                            id="companyname">
+                    </div>
+
+                    <div class="form-group" *hasPermission="['update_maker_profile']">
                         <label for="firstname">Firstname</label>
                         <input type="text" class="form-control" name="firstname" formControlName="firstname"
                             id="firstname">
+                    </div>
+
+                    <div class="form-group" *hasPermission="['update_company_profile']">
+                        <label for="streetaddress">Street and address</label>
+                        <input type="text" class="form-control" name="streetaddress" formControlName="streetaddress"
+                            id="streetaddress">
                     </div>
 
                     <div class="form-group">
@@ -39,19 +47,25 @@
                         <input type="email" class="form-control" name="email" formControlName="email" id="email">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *hasPermission="['update_maker_profile']">
                         <label for="lastname">Lastname</label>
                         <input type="text" class="form-control" name="lastname" formControlName="lastname"
                             id="lastname">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *hasPermission="['update_company_profile']">
+                        <label for="postalcode">Postalcode</label>
+                        <input type="text" class="form-control" name="postalcode" formControlName="postalcode"
+                            id="postalcode">
+                    </div>
+
+                    <div class="form-group" *hasPermission="['update_maker_profile']">
                         <label for="linkedin">LinkedIn profile link</label>
                         <input type="text" class="form-control" name="linkedin" formControlName="linkedin"
                             id="linkedin">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *hasPermission="['update_maker_profile']">
                         <label for="experience">Experience</label>
                         <textarea name="experience" class="form-control" id="experience" rows="5"
                             formControlName="experience"></textarea>
@@ -67,4 +81,4 @@
     </div>
 </div>
 
-{{editUserForm.value | json}}
+<!-- {{editUserForm.value | json}} -->

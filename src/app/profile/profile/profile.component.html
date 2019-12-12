@@ -2,19 +2,24 @@
     <div class="card" style="width: 28%;">
         <img src="../../../assets/images/logo_transparent.png" alt="profile picture" class="card-img-top">
         <div class="card-body border-top">
-            <div class="card-text">
-                <div class="font-weight-bold text-center">
+            <div class="card-text" *ngIf="isLoaded">
+                <div class="font-weight-bold text-center" *hasPermission="['read_maker_profile']">
                     {{user.maker.firstname}} {{user.maker.lastname}}
+                </div>
+
+                <div class="font-weight-bold text-center" *hasPermission="['read_company_profile']">
+                    {{user.company.name}}
                 </div>
                 <br>
                 <div>
-                    <div class="font-weight-bold ">
+                    <div class="font-weight-bold">
                         Biography
                     </div>
                     {{user.biography}}
                 </div>
-                <br>
-                <div>
+
+                <div *hasPermission="['read_maker_profile']">
+                    <br>
                     <div class="font-weight-bold ">
                         Experience
                     </div>
@@ -35,9 +40,14 @@
                         {{user.phonenumber}}
                     </div>
                     <br>
-                    <div>
+                    <div *hasPermission="['read_maker_profile']">
                         <span class="h6">LinkedIn:</span> <br>
                         {{user.maker.linkedIn}}
+                    </div>
+                    <div *hasPermission="['read_company_profile']">
+                        <span class="h6">Address:</span> <br>
+                        {{user.company.postalCode}} <br>
+                        {{user.company.streetAdress}}
                     </div>
                 </div>
             </div>
@@ -48,6 +58,4 @@
     </div>
 </div>
 
-
-
-{{user | json}}
+<!-- {{user | json}} -->
