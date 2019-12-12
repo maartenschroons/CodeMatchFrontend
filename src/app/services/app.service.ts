@@ -66,6 +66,15 @@ export class AppService {
   getAllInProgressAssignmentsByCompany(companyId: number): Observable<Assignment[]>{
     return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/inProgress/company/"+companyId);
   }
+
+  getAllInProgressAssignmentsByMaker(makerId: number): Observable<Assignment[]>{
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/inProgress/maker/"+makerId);
+  }
+
+  getAllCompletedAssignmentsByMaker(makerId: number): Observable<Assignment[]>{
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/completed/maker/"+makerId);
+  }
+
   //Assignments
   getAllAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
