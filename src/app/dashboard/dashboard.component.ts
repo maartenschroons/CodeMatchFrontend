@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   makerCheck: boolean = false;
   decoded;
   companyID: number;
+  makerID: number;
   userID: number;
   constructor(private router: Router, private _appService: AppService) {
     this.instantiateLists()
@@ -30,8 +31,13 @@ export class DashboardComponent implements OnInit {
   instantiateLists() {
     this.decoded = jwt_decode(localStorage.getItem("token"));
     this.companyID = this.decoded["CompanyID"];
-    if (this.companyID == null) {
+    this.makerID = this.decoded["MakerID"];
+    if (this.makerID != null) {
       this.makerCheck = true;
+      this.assignments = this._appService.getAllInProgressAssignmentsByMaker(this.makerID);
+      this._appService.getAllInProgressAssignmentsByMaker(this.makerID).subscribe(result => { this.assignmentsLength = result.length;console.log(result) });
+      this.appliedassignments = this._appService.getAllCompletedAssignmentsByMaker(this.makerID);
+      this._appService.getAllCompletedAssignmentsByMaker(this.makerID).subscribe(result => { this.appliedassignmentsLength = result.length })
     }
     else if (this.companyID != null) {
       this.makerCheck = false;
