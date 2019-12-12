@@ -12,12 +12,13 @@ import { ApplicationDto } from '../models/application-dto.model';
 import { UserDTO } from '../models/user-dto.model';
 import { MakerDTO } from '../models/maker-dto.model';
 import { CompanyDTO } from '../models/company-dto.model';
+import { Notification } from '../models/notification.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  gekozenAssignment = new BehaviorSubject( new Assignment(0,"","","","","",null,null,null,null));
+  gekozenAssignment = new BehaviorSubject(new Assignment(0, "", "", "", "", "", null, null, null, null));
   constructor(private http: HttpClient) { }
 
   getUserByIdAndRol(id: number) {
@@ -54,25 +55,49 @@ export class AppService {
   }
 
   //dashboard
-
   getUser(userID: number): any {
     return this.http.get<User>("https://localhost:5001/api/Users/" + userID);
   }
 
-  getAllInitialAssignmentsByCompany(companyId: number): Observable<Assignment[]>{
-    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/initial/company/"+companyId);
+  getAllInitialAssignmentsByCompany(companyId: number): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/initial/company/" + companyId);
   }
 
-  getAllInProgressAssignmentsByCompany(companyId: number): Observable<Assignment[]>{
-    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/inProgress/company/"+companyId);
+  getAllInProgressAssignmentsByCompany(companyId: number): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/inProgress/company/" + companyId);
   }
 
-  getAllInProgressAssignmentsByMaker(makerId: number): Observable<Assignment[]>{
-    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/inProgress/maker/"+makerId);
+  getAllCompletedAssignmentsByCompany(companyId: number): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/completed/company/" + companyId);
   }
 
-  getAllCompletedAssignmentsByMaker(makerId: number): Observable<Assignment[]>{
-    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/completed/maker/"+makerId);
+  getAllInProgressAssignmentsByMaker(makerId: number): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/inProgress/maker/" + makerId);
+  }
+
+  getAllCompletedAssignmentsByMaker(makerId: number): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>("https://localhost:5001/api/Assignments/completed/maker/" + makerId);
+  }
+
+  //Notifications
+  GetNotificationsByReceiver(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/" + userId);
+  }
+
+  GetReviewNotificationsByReceiver(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Review/" + userId);
+  }
+
+  GetApplicationNotificationsByReceiver(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Application/" + userId);
+  }
+
+  GetAssignmentNotificationsByReceiver(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Assignment/" + userId);
+  }
+
+  GetApplicationNotificationsBySender(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/sender/Application/" + userId);
   }
 
   //Assignments

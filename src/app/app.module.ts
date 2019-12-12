@@ -20,6 +20,11 @@ import { NotificationComponent } from './notification/notification.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AssignmentDetailsComponent } from './assignment/assignment-details/assignment-details.component';
+import { MakerDashboardComponent } from './dashboard/maker-dashboard/maker-dashboard.component';
+import { CompanyDashboardComponent } from './dashboard/company-dashboard/company-dashboard.component';
+import { InitialAssignmentsComponent } from './dashboard/company-dashboard/initial-assignments/initial-assignments.component';
+import { OngoingAssignmentsComponent } from './dashboard/company-dashboard/ongoing-assignments/ongoing-assignments.component';
+import { CompletedAssignmentsComponent } from './dashboard/company-dashboard/completed-assignments/completed-assignments.component';
 
 
 const appRoutes: Routes = [
@@ -27,8 +32,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: OverviewComponent },
-  { path: 'notification', component: OverviewComponent },
-  { path: 'dashboard', component: OverviewComponent },
+  { path: 'notification', component: NotificationComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'searchAssignment', component: SearchAssignmentComponent},
   { path: 'detailAssignment', component: AssignmentDetailsComponent}
 ];
@@ -41,6 +46,11 @@ const appRoutes: Routes = [
     RegisterComponent,
     DashboardComponent,
     NotificationComponent,
+    MakerDashboardComponent,
+    CompanyDashboardComponent,
+    InitialAssignmentsComponent,
+    OngoingAssignmentsComponent,
+    CompletedAssignmentsComponent
   ],
   imports: [
     BrowserModule,

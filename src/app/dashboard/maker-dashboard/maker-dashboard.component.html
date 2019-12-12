@@ -1,0 +1,20 @@
+<div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+    <div fxFlex="50%">
+        <h3>Open assignments</h3>
+        <div *ngIf="assignmentsLength==0">You have no assignments yet</div>
+        <div *ngFor="let assignment of (assignments | async)" class="padding">
+            {{assignment.name}} |
+            <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
+                assignment</button> |
+        </div>
+    </div>
+    <div fxFlex="50%">
+        <h3>Completed assignments</h3>
+        <div *ngIf="appliedassignmentsLength==0">You have no assignments yet</div>
+        <div *ngFor="let assignment of (appliedassignments | async)" class="padding">
+            {{assignment.name}} |
+            <button mat-button class="assignmentbtn" (click)="showAssignment(assignment)">Go to the
+                assignment</button> |
+        </div>
+    </div>
+</div>

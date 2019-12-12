@@ -13,16 +13,11 @@ import { AppService } from '../services/app.service';
 })
 export class DashboardComponent implements OnInit {
   name: string;
-  notificationAmount: number = 1;
+  notificationAmount: number;
   messageAmount: number = 2;
-  assignments: Observable<Assignment[]>;
-  appliedassignments: Observable<Assignment[]>;
-  assignmentsLength: number;
-  appliedassignmentsLength: number;
   makerCheck: boolean = false;
   decoded;
-  companyID: number;
-  makerID: number;
+  role:string;
   userID: number;
   constructor(private router: Router, private _appService: AppService) {
     this.instantiateLists()
@@ -30,26 +25,17 @@ export class DashboardComponent implements OnInit {
 
   instantiateLists() {
     this.decoded = jwt_decode(localStorage.getItem("token"));
-    this.companyID = this.decoded["CompanyID"];
-    this.makerID = this.decoded["MakerID"];
-    if (this.makerID != null) {
-      this.makerCheck = true;
-      this.assignments = this._appService.getAllInProgressAssignmentsByMaker(this.makerID);
-      this._appService.getAllInProgressAssignmentsByMaker(this.makerID).subscribe(result => { this.assignmentsLength = result.length;console.log(result) });
-      this.appliedassignments = this._appService.getAllCompletedAssignmentsByMaker(this.makerID);
-      this._appService.getAllCompletedAssignmentsByMaker(this.makerID).subscribe(result => { this.appliedassignmentsLength = result.length })
-    }
-    else if (this.companyID != null) {
-      this.makerCheck = false;
-      this.assignments = this._appService.getAllInitialAssignmentsByCompany(this.companyID);
-      this._appService.getAllInitialAssignmentsByCompany(this.companyID).subscribe(result => { this.assignmentsLength = result.length;console.log(result) });
-      this.appliedassignments = this._appService.getAllInProgressAssignmentsByCompany(this.companyID);
-      this._appService.getAllInProgressAssignmentsByCompany(this.companyID).subscribe(result => { this.appliedassignmentsLength = result.length })
-      
-    }
+    this.role = this.decoded["role"];
     this.userID = this.decoded["UserID"];
-
+    if (this.role == "Maker") {
+      this.makerCheck = true;
+    }
+    else if (this.role == "Company") {
+      this.makerCheck = false;
+    }
+    console.log(this.decoded);
     this._appService.getUser(this.userID).subscribe(result => { this.name = result.email });
+    this._appService.GetNotificationsByReceiver(this.userID).subscribe(result => { this.notificationAmount = result.length });
   }
 
   ngOnInit() {

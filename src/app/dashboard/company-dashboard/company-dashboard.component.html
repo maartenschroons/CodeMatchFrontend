@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav>
+                <div class="nav nav-tabs text-center" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active w-25" id="nav-initial-tab" data-toggle="tab" href="#nav-initial"
+                        role="tab" aria-controls="nav-profile" aria-selected="true">Initial</a>
+
+                    <a class="nav-item nav-link w-25" id="nav-ongoing-tab" data-toggle="tab" href="#nav-ongoing"
+                        role="tab" aria-controls="nav-assignments" aria-selected="false">Ongoing</a>
+
+                    <a class="nav-item nav-link w-25" id="nav-completed-tab" data-toggle="tab" href="#nav-completed" role="tab"
+                        aria-controls="nav-tags" aria-selected="false">Completed</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-initial" role="tabpanel" aria-labelledby="nav-initial-tab">
+            <app-initial-assignments></app-initial-assignments>
+        </div>
+
+        <div class="tab-pane fade" id="nav-ongoing" role="tabpanel" aria-labelledby="nav-ongoing-tab">
+            <app-ongoing-assignments></app-ongoing-assignments>
+        </div>
+
+        <div class="tab-pane fade" id="nav-completed" role="tabpanel" aria-labelledby="nav-completed-tab">
+            <app-completed-assignments></app-completed-assignments>
+        </div>
+    </div>
+
+</div>
