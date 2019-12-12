@@ -1,0 +1,6 @@
+<h3>Application Notifications</h3>
+<div *ngIf="notificationsLength == 0"> You have no unanswered sent invites</div>
+
+<div *ngFor="let notification of (notifications | async)" class="padding">
+    Your application for project {{notification.application.assignment.name}} has been accepted.
+</div>

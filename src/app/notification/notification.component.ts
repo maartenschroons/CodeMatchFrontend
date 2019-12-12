@@ -11,43 +11,23 @@ import { Notification } from '../models/notification.model';
   styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-  AssignmentnotificationsLength: number;
-  Assignmentnotifications: Observable<Notification[]>;
-  ReviewnotificationsLength: number;
-  Reviewnotifications: Observable<Notification[]>;
-  ParticipationnotificationsLength: number;
-  Participationnotifications: Observable<Notification[]>;
+  check: boolean;
   decoded;
-  companyID: number;
-  makerID: number;
-  userID: number;
-
+  role:string;
   constructor(private router: Router, private _appService: AppService) {
     this.instantiateLists();
   }
 
   instantiateLists() {
     this.decoded = jwt_decode(localStorage.getItem("token"));
-    this.companyID = this.decoded["CompanyID"];
-    this.makerID = this.decoded["MakerID"];
-    this.userID = this.decoded["UserID"];
-    if (this.makerID != null) {
-      this.Assignmentnotifications = this._appService.GetAssignmentNotificationsByReceiver(this.userID);
-      this.Assignmentnotifications.subscribe(result => { this.AssignmentnotificationsLength = result.length });
-
-      this.Reviewnotifications = this._appService.GetReviewNotificationsByReceiver(this.userID);
-      this.Reviewnotifications.subscribe(result => { this.ReviewnotificationsLength = result.length });
-
-      this.Participationnotifications = this._appService.GetApplicationNotificationsByReceiver(this.userID);
-      this.Participationnotifications.subscribe(result => { this.ParticipationnotificationsLength = result.length });
-
+    this.role = this.decoded["role"];
+  
+    if (this.role == "Maker") {
+      this.check = true;
     }
-    else if (this.companyID != null) {
-      this.Participationnotifications = this._appService.GetApplicationNotificationsByReceiver(this.userID);
-      this.Participationnotifications.subscribe(result => { this.ParticipationnotificationsLength = result.length });
+    else if (this.role == "Company") {
+      this.check = false;
     }
-    console.log(this.Reviewnotifications);
-
   }
 
   ngOnInit() {

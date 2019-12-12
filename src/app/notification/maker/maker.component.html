@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav>
+                <div class="nav nav-tabs text-center" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active w-25" id="nav-application-tab" data-toggle="tab" href="#nav-application"
+                        role="tab" aria-controls="nav-application" aria-selected="true">Application ({{applicationLength}})</a>
+
+                    <a class="nav-item nav-link w-25" id="nav-review-tab" data-toggle="tab" href="#nav-review"
+                        role="tab" aria-controls="nav-review" aria-selected="false">Reviews ({{reviewLength}})</a>
+
+                    <a class="nav-item nav-link w-25" id="nav-assignments-tab" data-toggle="tab" href="#nav-assignments" role="tab"
+                        aria-controls="nav-assignments" aria-selected="false">Assignments ({{assignmentLength}})</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-application" role="tabpanel" aria-labelledby="nav-application-tab">
+            <app-maker-application-notifications></app-maker-application-notifications>
+        </div>
+
+        <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
+            <app-maker-review-notifications></app-maker-review-notifications>
+        </div>
+
+        <div class="tab-pane fade" id="nav-assignments" role="tabpanel" aria-labelledby="nav-assignments-tab">
+            <app-maker-assignment-notifications></app-maker-assignment-notifications>
+        </div>
+    </div>
+
+</div>

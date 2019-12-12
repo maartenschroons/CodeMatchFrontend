@@ -1,28 +1,10 @@
 <div class="content container">
     <h1 class="titel">Notifications</h1>
-    <h2>Maker</h2>
-    <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+    <div *ngIf="check">
+        <app-maker-notification></app-maker-notification>
+    </div>
 
-        <div fxFlex="33%">
-            <h3> assignment Notifications</h3>
-            <div *ngIf="AssignmentnotificationsLength == 0"> You have no notifications</div>
-            <div class="padding" *ngFor="let notification of (Assignmentnotifications | async)">
-                <p>You application for Assignment has been accepted</p>
-            </div>
-        </div>
-        <div fxFlex="33%">
-            <h2>review applications</h2>
-            <div *ngIf="ReviewnotificationsLength == 0"> You have no unanswered sent invites</div>
-            <div *ngFor="let invite of (Reviewnotifications | async)" class="padding">
-                test</div>
-        </div>
-        <div fxFlex="33%">
-            <h2>participation applications</h2>
-            <div *ngIf="ParticipationnotificationsLength == 0"> You have no unanswered sent invites</div>
-
-            <div *ngFor="let invite of (Participationnotifications | async)" class="padding">
-                b</div>
-        </div>
-
+    <div *ngIf="!check">   
+        <app-company-notification></app-company-notification>
     </div>
 </div>

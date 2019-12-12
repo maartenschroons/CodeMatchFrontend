@@ -27,6 +27,13 @@ import { OngoingAssignmentsComponent } from './dashboard/company-dashboard/ongoi
 import { CompletedAssignmentsComponent } from './dashboard/company-dashboard/completed-assignments/completed-assignments.component';
 import { MakerCompletedComponent } from './dashboard/maker-dashboard/maker-completed/maker-completed.component';
 import { MakerOngoingComponent } from './dashboard/maker-dashboard/maker-ongoing/maker-ongoing.component';
+import { MakerComponent } from './notification/maker/maker.component';
+import { MakerReviewNotificationsComponent } from './notification/maker/maker-review-notifications/maker-review-notifications.component';
+import { MakerApplicationNotificationsComponent } from './notification/maker/maker-application-notifications/maker-application-notifications.component';
+import { MakerAssignmentNotificationsComponent } from './notification/maker/maker-assignment-notifications/maker-assignment-notifications.component';
+import { CompanyComponent } from './notification/company/company.component';
+import { CompanyApplicationNotificationsComponent } from './notification/company/company-application-notifications/company-application-notifications.component';
+import { CompanyReviewNotificationsComponent } from './notification/company/company-review-notifications/company-review-notifications.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -53,7 +60,14 @@ const appRoutes: Routes = [
     OngoingAssignmentsComponent,
     CompletedAssignmentsComponent,
     MakerCompletedComponent,
-    MakerOngoingComponent
+    MakerOngoingComponent,
+    MakerComponent,
+    MakerReviewNotificationsComponent,
+    MakerApplicationNotificationsComponent,
+    MakerAssignmentNotificationsComponent,
+    CompanyComponent,
+    CompanyApplicationNotificationsComponent,
+    CompanyReviewNotificationsComponent
   ],
   imports: [
     BrowserModule,
