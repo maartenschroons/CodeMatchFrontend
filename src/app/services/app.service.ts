@@ -6,12 +6,15 @@ import { Company } from '../models/company.model';
 import { Assignment } from '../models/assignment.model';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserWithPermissions } from '../models/user-with-permissions.model';
+import { Tag } from '../models/tag.model';
+import { ApplicationDto } from '../models/application-dto.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-
+  gekozenAssignment = new BehaviorSubject( new Assignment(0,"","","","","",null,null,null,null));
   constructor(private http: HttpClient) { }
 
   getUserByIdAndRol(id: number) {
@@ -58,5 +61,14 @@ export class AppService {
   userPermissions = this.userPermissionsSubject.asObservable();
   setUserPermissions(userWithPermissions: UserWithPermissions) {
     this.userPermissionsSubject.next(userWithPermissions);
+  }
+  //Tags
+  getAllTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>("https://localhost:5001/api/tags");
+  }
+
+  //Application
+  postNewApplication(applicationDto: ApplicationDto) {
+    return this.http.post<ApplicationDto>("https://localhost:5001/api/applications/", applicationDto);
   }
 }
