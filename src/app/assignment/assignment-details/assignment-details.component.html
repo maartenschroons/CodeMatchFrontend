@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="my-4">{{assignment.name}}</h1>
+    <div class="d-flex justify-content-start">
+        <div class="card text-start w-100">
+            <h3 class="card-header">
+                <span class="font-weight-bold"> Company:</span> {{assignment.company.name}}
+            </h3>
+            <div class="card-body">
+                <h5 class="card-title"><span class="font-weight-bold">Adress:</span> {{assignment.streetAdress}},
+                    {{assignment.postalCode}}</h5>
+                <p class="card-text"><span class="font-weight-bold">Description: </span>{{assignment.description}}</p>
+                <hr>
+                <p class="card-text"><span class="font-weight-bold">Tags: </span>
+                    <span *ngFor="let t of assignment.assignmentTags"
+                        class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
+                </p>
+                <hr>
+                <div *ngIf="!alreadyApplied">
+                    <h5 class="card-title">Use the button below to apply for the assignment!</h5>
+                    <a class="btn btn-primary" (click)="applyForAssignment()">Apply!</a>
+                </div>
+                <div *ngIf="alreadyApplied">
+                        <h5 class="card-title">You already applied for this assignment</h5>
+                    </div>
+            </div>
+            <div class="card-footer text-muted">
+                {{now | date:'dd-MMM-yyyy HH:mm'}}
+            </div>
+        </div>
+    </div>
+</div>

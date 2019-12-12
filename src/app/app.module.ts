@@ -19,16 +19,18 @@ import { AssignmentModule } from './assignment/assignment.module';
 import { NotificationComponent } from './notification/notification.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AssignmentDetailsComponent } from './assignment/assignment-details/assignment-details.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'notification', component: NotificationComponent},
-  { path: 'profile', component: OverviewComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: OverviewComponent },
+  { path: 'notification', component: OverviewComponent },
+  { path: 'dashboard', component: OverviewComponent },
   { path: 'searchAssignment', component: SearchAssignmentComponent},
+  { path: 'detailAssignment', component: AssignmentDetailsComponent}
 ];
 
 @NgModule({
