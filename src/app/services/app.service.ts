@@ -4,7 +4,8 @@ import { Maker } from '../models/maker.model';
 import { User } from '../models/user.model';
 import { Company } from '../models/company.model';
 import { Assignment } from '../models/assignment.model';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { UserWithPermissions } from '../models/user-with-permissions.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
   getUserByIdAndRol(id: number) {
-    return this.http.get<User>("https://localhost:5001/api/Users/user/info/" + id)
+    return this.http.get<any>("https://localhost:5001/api/Users/user/info/" + id)
   }
 
   //register
@@ -50,5 +51,12 @@ export class AppService {
   //Assignments
   getAllAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
+  }
+
+  // behaviorSubjects
+  private userPermissionsSubject = new BehaviorSubject(new UserWithPermissions('', []));
+  userPermissions = this.userPermissionsSubject.asObservable();
+  setUserPermissions(userWithPermissions: UserWithPermissions) {
+    this.userPermissionsSubject.next(userWithPermissions);
   }
 }

@@ -3,6 +3,11 @@
         <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-lg-6 border-right">
+
+                    <div class="h2" *hasPermission="['update_maker_profile']">
+                        test
+                    </div>
+
                     <div class="form-group">
                         <label for="nickname">Nickname</label>
                         <input type="text" class="form-control" name="nickname" formControlName="nickname"

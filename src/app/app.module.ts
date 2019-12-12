@@ -18,6 +18,7 @@ import { SecurityInterceptor } from './security.interceptor';
 import { AssignmentModule } from './assignment/assignment.module';
 import { NotificationComponent } from './notification/notification.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 const appRoutes: Routes = [
@@ -35,7 +36,9 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

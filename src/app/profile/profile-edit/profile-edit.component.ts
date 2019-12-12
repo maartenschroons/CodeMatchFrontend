@@ -3,6 +3,7 @@ import { AppService } from 'src/app/services/app.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
 import * as jwt_decode from 'jwt-decode';
+import { UserWithPermissions } from 'src/app/models/user-with-permissions.model';
 
 @Component({
   selector: 'app-profile-edit',
@@ -14,6 +15,7 @@ export class ProfileEditComponent implements OnInit {
   user: User = new User(null, '', '', '', '', null , null, null, null, null, null, null);
   userId: number;
   editUserForm: FormGroup;
+  userWithPermissions: UserWithPermissions = new UserWithPermissions('', []);
   
   constructor(private  _appService: AppService, private fb: FormBuilder) { }
 
@@ -35,7 +37,6 @@ export class ProfileEditComponent implements OnInit {
 
     this._appService.getUserByIdAndRol(this.userId).subscribe(result => {
       this.user = result;
-
       this.editUserForm.patchValue({
          nickname: this.user.maker.nickname,
          email: this.user.email,
@@ -46,6 +47,12 @@ export class ProfileEditComponent implements OnInit {
          experience: this.user.maker.experience,
          biography: this.user.biography
       })
+
+      this.userWithPermissions.email = result.email;
+      result.role.rolePermissions.forEach(x => {
+        this.userWithPermissions.permission.push(x.permission.name);
+      });
+      this._appService.setUserPermissions(this.userWithPermissions);
     })
   }
 
