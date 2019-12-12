@@ -6,11 +6,13 @@ import { CompanyDashboardComponent } from './company-dashboard/company-dashboard
 import { InitialAssignmentsComponent } from './company-dashboard/initial-assignments/initial-assignments.component';
 import { OngoingAssignmentsComponent } from './company-dashboard/ongoing-assignments/ongoing-assignments.component';
 import { CompletedAssignmentsComponent } from './company-dashboard/completed-assignments/completed-assignments.component';
+import { MakerOngoingComponent } from './maker-dashboard/maker-ongoing/maker-ongoing.component';
+import { MakerCompletedComponent } from './maker-dashboard/maker-completed/maker-completed.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, MakerDashboardComponent, CompanyDashboardComponent, InitialAssignmentsComponent, OngoingAssignmentsComponent, CompletedAssignmentsComponent],
+  declarations: [DashboardComponent, MakerDashboardComponent, CompanyDashboardComponent, InitialAssignmentsComponent, OngoingAssignmentsComponent, CompletedAssignmentsComponent, MakerOngoingComponent, MakerCompletedComponent],
   imports: [
     CommonModule
   ]

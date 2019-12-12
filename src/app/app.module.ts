@@ -25,7 +25,8 @@ import { CompanyDashboardComponent } from './dashboard/company-dashboard/company
 import { InitialAssignmentsComponent } from './dashboard/company-dashboard/initial-assignments/initial-assignments.component';
 import { OngoingAssignmentsComponent } from './dashboard/company-dashboard/ongoing-assignments/ongoing-assignments.component';
 import { CompletedAssignmentsComponent } from './dashboard/company-dashboard/completed-assignments/completed-assignments.component';
-
+import { MakerCompletedComponent } from './dashboard/maker-dashboard/maker-completed/maker-completed.component';
+import { MakerOngoingComponent } from './dashboard/maker-dashboard/maker-ongoing/maker-ongoing.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -50,7 +51,9 @@ const appRoutes: Routes = [
     CompanyDashboardComponent,
     InitialAssignmentsComponent,
     OngoingAssignmentsComponent,
-    CompletedAssignmentsComponent
+    CompletedAssignmentsComponent,
+    MakerCompletedComponent,
+    MakerOngoingComponent
   ],
   imports: [
     BrowserModule,
