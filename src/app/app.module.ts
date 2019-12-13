@@ -39,6 +39,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminAssignmentsComponent } from './admin/admin-assignments/admin-assignments.component';
 import { AdminReviewsComponent } from './admin/admin-reviews/admin-reviews.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
+import { BekijkReviewComponent } from './profile/bekijk-review/bekijk-review.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
   { path: 'searchAssignment', component: SearchAssignmentComponent},
   { path: 'detailAssignment', component: AssignmentDetailsComponent},
   { path: 'admin', component: AdminComponent},
-  { path: 'userReviewList', component: AdminReviewsComponent}
+  { path: 'userReviewList', component: AdminReviewsComponent},
+  { path: 'bekijkReview', component: BekijkReviewComponent}
 ];
 
 @NgModule({

@@ -25,7 +25,7 @@ export class AssignmentDetailsComponent implements OnInit {
     this.userID =decoded["UserID"];
     this._appService.gekozenAssignment.subscribe(e=> {
       this.assignment = e;
-      //console.log(this.assignment);
+      console.log(this.assignment);
       // Als er gerefresht wordt dan is de poll leeg -> stuur terug naar poll component
       if (this.assignment.assignmentID == 0) {
         this.router.navigate(["searchAssignment"]);

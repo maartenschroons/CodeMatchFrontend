@@ -1,0 +1,42 @@
+<div class="container">
+        <h1 class="my-4"></h1>
+        <div class="d-flex justify-content-start">
+            <div class="card text-start w-100">
+                <h3 class="card-header">
+                    <span class="font-weight-bold"> Company:</span>
+                </h3>
+                <div class="card-body">
+                    <h5 class="card-title"><span class="font-weight-bold">Adress:</span> </h5>
+                    <p class="card-text"><span class="font-weight-bold">Description: </span></p>
+                    <hr>
+                    <p class="card-text"><span class="font-weight-bold">Tags: </span>
+                        <span 
+                            class="card-text border border-dark rounded p-1 m-2"></span>
+                    </p>
+                    <hr>
+                    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text" formControlName="description" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.description.errors}" />
+                                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                    <div *ngIf="f.description.errors.required">Fill in a description</div>
+                                </div>
+                            </div>
+                            <p><button mat-raised-button color="primary" type="submit">Submit</button></p>
+                        </form>
+                    <hr >
+                    <div >
+                        <h5 class="card-title">Use the button below to apply for the assignment!</h5>
+                        <a class="btn btn-primary" (click)="applyForAssignment()">Apply!</a>
+                    </div>
+                    <div >
+                            <h5 class="card-title">You already applied for this assignment</h5>
+                        </div>
+                </div>
+                <div class="card-footer text-muted">
+                    {{now | date:'dd-MMM-yyyy HH:mm'}}
+                </div>
+            </div>
+        </div>
+    </div>

@@ -44,6 +44,7 @@ export class ProfileEditComponent implements OnInit {
     this._appService.getUserByIdAndRol(this.userId).subscribe(result => {
       this.user = result;
       
+      //console.log(result);
       if(this.user.companyID) {
         this.fillCompanyFormInfo();
       }

@@ -8,6 +8,8 @@ import { DirectivesModule } from '../directives/directives.module';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { TagsComponent } from './tags/tags.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReviewComponent } from './review/review.component';
+import { BekijkReviewComponent } from './bekijk-review/bekijk-review.component';
 
 
 
@@ -17,7 +19,9 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     ProfileComponent,
     ProfileEditComponent,
     AssignmentsComponent,
-    TagsComponent
+    TagsComponent,
+    ReviewComponent,
+    BekijkReviewComponent
   ],
   imports: [
     CommonModule,

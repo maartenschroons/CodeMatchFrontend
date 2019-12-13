@@ -24,7 +24,7 @@ export class SearchAssignmentComponent implements OnInit {
    getAllAssignments() {
     this._appService.getAllAssignments().subscribe(result => {
       this.assignments = result;
-      console.log(this.assignments);
+      //console.log(this.assignments);
     });
    }
 

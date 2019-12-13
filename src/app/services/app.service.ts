@@ -20,6 +20,7 @@ import { MakerTag } from '../models/maker-tag.model';
 import { CompanyTag } from '../models/company-tag.model';
 import { MakerTagDTO } from '../models/maker-tag-dto.model';
 import { CompanyTagDTO } from '../models/company-tag-dto.model';
+import { ReviewDto } from '../models/review-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,8 @@ import { CompanyTagDTO } from '../models/company-tag-dto.model';
 export class AppService {
   gekozenAssignment = new BehaviorSubject(new Assignment(0, "", "", "", "", "", null, null, null, null));
   gekozenUser = new BehaviorSubject(new User(0,"","","","",null,0,null,0,null,null,null));
+  receiverID = new BehaviorSubject({receiverid: 0, type: ""});
+
   constructor(private http: HttpClient) { }
 
   // behaviorSubjects
@@ -156,7 +159,7 @@ export class AppService {
 
   //Assignments
   getAllAssignments(): Observable<Assignment[]> {
-    return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
+    return this.http.get<Assignment[]>("https://localhost:5001/api/assignments/assignmentInitial");
   }
 
   //Tags
@@ -218,4 +221,8 @@ export class AppService {
     return this.http.get<Review[]>("https://localhost:5001/api/Reviews/receiver/"+id);
   }
 
+  //Reviews
+  GetReviewBySenderIdReceiverIdAssignmentId(reviewDto: ReviewDto): Observable<Review[]> {
+    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/review/" + reviewDto);
+  }
 }

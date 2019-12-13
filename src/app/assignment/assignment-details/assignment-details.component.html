@@ -15,6 +15,11 @@
                         class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
                 </p>
                 <hr>
+                <p *ngIf="assignment.status==='InProgress'" class="card-text"><span class="font-weight-bold">Makers: </span>
+                    <span *ngFor="let a of assignment.applications"
+                        class="card-text border border-dark rounded p-1 m-2">{{a.maker.firstname}}</span>
+                </p>
+                <hr *ngIf="assignment.status==='InProgress'">
                 <div *ngIf="!alreadyApplied">
                     <h5 class="card-title">Use the button below to apply for the assignment!</h5>
                     <a class="btn btn-primary" (click)="applyForAssignment()">Apply!</a>
