@@ -27,7 +27,7 @@ export class CompanyDashboardComponent implements OnInit {
     this.companyID = this.decoded["CompanyID"];
 
     this.assignments = this._appService.getAllInitialAssignmentsByCompany(this.companyID);
-    this._appService.getAllInitialAssignmentsByCompany(this.companyID).subscribe(result => { this.assignmentsLength = result.length});
+    this._appService.getAllInitialAssignmentsByCompany(this.companyID).subscribe(result => { this.assignmentsLength = result.length });
     this.appliedassignments = this._appService.getAllInProgressAssignmentsByCompany(this.companyID);
     this._appService.getAllInProgressAssignmentsByCompany(this.companyID).subscribe(result => { this.appliedassignmentsLength = result.length })
 

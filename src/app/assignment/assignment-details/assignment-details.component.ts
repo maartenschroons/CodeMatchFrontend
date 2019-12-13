@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Assignment } from 'src/app/models/assignment.model';
 import { ApplicationDto } from 'src/app/models/application-dto.model';
 import * as jwt_decode from 'jwt-decode';
+import { NotificationDto } from 'src/app/models/notification-dto.model';
 
 @Component({
   selector: 'app-assignment-details',
@@ -14,12 +15,14 @@ export class AssignmentDetailsComponent implements OnInit {
   assignment: Assignment;
   applicationDto: ApplicationDto;
   makerID: number;
+  userID: number;
   alreadyApplied: boolean;
   public now: Date = new Date();
 
   constructor(private _appService: AppService, private router: Router) {
     var decoded = jwt_decode(localStorage.getItem("token"));
     this.makerID = decoded["MakerID"];
+    this.userID =decoded["UserID"];
     this._appService.gekozenAssignment.subscribe(e=> {
       this.assignment = e;
       //console.log(this.assignment);

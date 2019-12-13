@@ -35,6 +35,10 @@ import { CompanyComponent } from './notification/company/company.component';
 import { CompanyApplicationNotificationsComponent } from './notification/company/company-application-notifications/company-application-notifications.component';
 import { CompanyReviewNotificationsComponent } from './notification/company/company-review-notifications/company-review-notifications.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminComponent } from './admin/admin.component';
+import { AdminAssignmentsComponent } from './admin/admin-assignments/admin-assignments.component';
+import { AdminReviewsComponent } from './admin/admin-reviews/admin-reviews.component';
+import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,7 +48,9 @@ const appRoutes: Routes = [
   { path: 'notification', component: NotificationComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'searchAssignment', component: SearchAssignmentComponent},
-  { path: 'detailAssignment', component: AssignmentDetailsComponent}
+  { path: 'detailAssignment', component: AssignmentDetailsComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'userReviewList', component: AdminReviewsComponent}
 ];
 
 @NgModule({
@@ -68,7 +74,11 @@ const appRoutes: Routes = [
     MakerAssignmentNotificationsComponent,
     CompanyComponent,
     CompanyApplicationNotificationsComponent,
-    CompanyReviewNotificationsComponent
+    CompanyReviewNotificationsComponent,
+    AdminComponent,
+    AdminAssignmentsComponent,
+    AdminReviewsComponent,
+    AdminUsersComponent
   ],
   imports: [
     BrowserModule,

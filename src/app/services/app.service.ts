@@ -15,12 +15,14 @@ import { CompanyDTO } from '../models/company-dto.model';
 import { Notification } from '../models/notification.model';
 import { Application } from '../models/application.model';
 import { NotificationDto } from '../models/notification-dto.model';
+import { Review } from '../models/review.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   gekozenAssignment = new BehaviorSubject(new Assignment(0, "", "", "", "", "", null, null, null, null));
+  gekozenUser = new BehaviorSubject(new User(0,"","","","",null,0,null,0,null,null,null));
   constructor(private http: HttpClient) { }
 
   // behaviorSubjects
@@ -71,7 +73,7 @@ export class AppService {
 
   //dashboard
 
-  editAssignment(assignment: Assignment){
+  editAssignment(assignment: Assignment) {
     return this.http.put<Assignment>("https://localhost:5001/api/Assignments/" + assignment.assignmentID, assignment);
   }
 
@@ -134,12 +136,12 @@ export class AppService {
     return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/sender/Application/" + userId);
   }
 
-  PostNotification(notification: NotificationDto){
+  PostNotification(notification: NotificationDto) {
     return this.http.post<NotificationDto>("https://localhost:5001/api/Notifications/", notification);
   }
 
-  EditNotification(notification: Notification){
-    return this.http.put<Notification>("https://localhost:5001/api/Notifications/"+ notification.notificationID, notification);
+  EditNotification(notification: Notification) {
+    return this.http.put<Notification>("https://localhost:5001/api/Notifications/" + notification.notificationID, notification);
   }
 
   //Assignments
@@ -158,6 +160,20 @@ export class AppService {
   }
 
   editApplication(application: Application) {
-    return this.http.put<Application>("https://localhost:5001/api/applications/"+ application.applicationID, application);
+    return this.http.put<Application>("https://localhost:5001/api/applications/" + application.applicationID, application);
   }
+
+  //admin
+  getAllUsers():Observable<User[]> {
+    return this.http.get<User[]>("https://localhost:5001/api/Users");
+  }
+
+  getAllReviewsBySender(id: number):Observable<Review[]>{
+    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/sender/"+id);
+  }
+
+  getAllReviewsByReceiver(id: number):Observable<Review[]>{
+    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/receiver/"+id);
+  }
+
 }
