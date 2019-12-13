@@ -1,6 +1,6 @@
-<h3>Application Notifications</h3>
-<div *ngIf="notificationsLength == 0"> You have no unanswered sent invites</div>
+<h2>Application Notifications</h2>
+<div *ngIf="notificationsLength == 0"> You have no new notifications</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
-    {{notification.application.maker.nickname}} has applied for your project {{notification.application.assignment.name}} .
+    <a (click)="showMaker()">{{notification.application.maker.nickname}}</a> has applied for your project {{notification.application.assignment.name}}.<button (click)="accept(notification)">Accept</button><button (click)="decline(notification)">Decline</button>
 </div>

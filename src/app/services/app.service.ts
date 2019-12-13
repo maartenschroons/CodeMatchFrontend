@@ -13,6 +13,8 @@ import { UserDTO } from '../models/user-dto.model';
 import { MakerDTO } from '../models/maker-dto.model';
 import { CompanyDTO } from '../models/company-dto.model';
 import { Notification } from '../models/notification.model';
+import { Application } from '../models/application.model';
+import { NotificationDto } from '../models/notification-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -113,6 +115,14 @@ export class AppService {
     return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/sender/Application/" + userId);
   }
 
+  PostNotification(notification: NotificationDto){
+    return this.http.post<NotificationDto>("https://localhost:5001/api/Notifications/", notification);
+  }
+
+  EditNotification(notification: Notification){
+    return this.http.put<Notification>("https://localhost:5001/api/Notifications/"+ notification.notificationID, notification);
+  }
+
   //Assignments
   getAllAssignments(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
@@ -126,5 +136,9 @@ export class AppService {
   //Application
   postNewApplication(applicationDto: ApplicationDto) {
     return this.http.post<ApplicationDto>("https://localhost:5001/api/applications/", applicationDto);
+  }
+
+  editApplication(application: Application) {
+    return this.http.put<Application>("https://localhost:5001/api/applications/"+ application.applicationID, application);
   }
 }

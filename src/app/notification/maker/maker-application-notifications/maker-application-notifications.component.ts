@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable} from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Notification } from '../../../models/notification.model';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import * as jwt_decode from 'jwt-decode';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Application } from 'src/app/models/application.model';
+import { Company } from 'src/app/models/company.model';
+
 
 @Component({
   selector: 'app-maker-application-notifications',
@@ -16,6 +20,8 @@ export class MakerApplicationNotificationsComponent implements OnInit {
   decoded;
   userID: number;
   
+
+
   constructor(private router: Router, private _appService: AppService) {
     this.instantiateLists()
   }
@@ -24,10 +30,13 @@ export class MakerApplicationNotificationsComponent implements OnInit {
     this.userID = this.decoded["UserID"];
 
     this.notifications = this._appService.GetApplicationNotificationsByReceiver(this.userID);
-    this.notifications.subscribe(result => { this.notificationsLength = result.length});
+    this.notifications.subscribe(result => { this.notificationsLength = result.length });
   }
-  
+
+
+
   ngOnInit() {
   }
+
 
 }

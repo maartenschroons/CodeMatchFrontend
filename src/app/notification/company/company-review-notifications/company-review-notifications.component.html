@@ -1,6 +1,6 @@
 <h3>Review Notifications</h3>
-<div *ngIf="notificationsLength == 0"> You have no unanswered sent invites</div>
+<div *ngIf="notificationsLength == 0"> You have no new notifications</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
-    {{notification.review.sender.email}} has written a review about you!
+    {{notification.review.sender.email}} has written a review about you! <button>Check it out!</button>
 </div>

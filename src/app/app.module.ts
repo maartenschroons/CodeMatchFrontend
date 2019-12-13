@@ -34,6 +34,7 @@ import { MakerAssignmentNotificationsComponent } from './notification/maker/make
 import { CompanyComponent } from './notification/company/company.component';
 import { CompanyApplicationNotificationsComponent } from './notification/company/company-application-notifications/company-application-notifications.component';
 import { CompanyReviewNotificationsComponent } from './notification/company/company-review-notifications/company-review-notifications.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
     ProfileModule,
     HttpClientModule,
     AssignmentModule,
+    NgbModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
   providers: [{
