@@ -7,6 +7,8 @@ import * as jwt_decode from 'jwt-decode';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Application } from 'src/app/models/application.model';
 import { Company } from 'src/app/models/company.model';
+import { User } from 'src/app/models/user.model';
+
 
 
 @Component({
@@ -21,10 +23,10 @@ export class MakerApplicationNotificationsComponent implements OnInit {
   readNotificationsLength: number;
   decoded;
   userID: number;
-  
+  closeResult: string;
+  company: User;
 
-
-  constructor(private router: Router, private _appService: AppService) {
+  constructor(private router: Router, private _appService: AppService, private modalService: NgbModal) {
     this.instantiateLists()
   }
   instantiateLists() {
@@ -47,5 +49,23 @@ export class MakerApplicationNotificationsComponent implements OnInit {
   ngOnInit() {
   }
 
+  open(content, company: User) {
+    this.company = company;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
 }

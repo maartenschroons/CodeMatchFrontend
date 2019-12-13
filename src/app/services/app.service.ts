@@ -119,6 +119,10 @@ export class AppService {
     return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Application/read/" + userId);
   }
 
+  GetReadApplicationNotificationsByCompany(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/company/Application/read/" + userId);
+  }
+
   GetAssignmentNotificationsByReceiver(userId: number): Observable<Notification[]> {
     return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Assignment/" + userId);
   }

@@ -3,6 +3,35 @@
 <div class="notification" *ngIf="notificationsLength == 0"> There are no open applications!</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
-    <a (click)="showMaker()">{{notification.application.maker.nickname}}</a> has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
+    {{notification.application.maker.nickname}} has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
 </div>
 
+<div class="notification" *ngIf="readNotificationsLength != 0"> Old applications</div>
+<div class="notification" *ngIf="readNotificationsLength == 0"> There are no old applications!</div>
+
+<div *ngFor="let notification of (readNotifications | async)" class="padding">
+    <button (click)="open(content,notification.sender)">{{notification.application.maker.nickname}}</button> has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
+</div>
+
+<ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">{{user.maker.nickname}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                        <label>{{user.maker.firstname}} {{user.maker.lastname}}</label>
+                    <hr>
+                    <label>Maker email: {{user.email}}</label>
+                    <hr>
+                    <label>Maker phone number: {{user.phonenumber}}</label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div>
+    </ng-template>

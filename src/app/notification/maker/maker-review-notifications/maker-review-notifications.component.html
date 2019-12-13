@@ -1,13 +1,39 @@
 <h3>Review Notifications</h3>
-<div class="notification"  *ngIf="notificationsLength != 0"> You have new notifications</div>
+<div class="notification" *ngIf="notificationsLength != 0"> You have new notifications</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
-    {{notification.review.sender.email}} has written a review about you! <button>Check it out!</button>
+    {{notification.review.sender.email}} has written a review about you! <button class="btn btn-lg btn-outline-primary"
+    (click)="open(content,notification.review)">Check it out!</button>
 </div>
 
-<div class="notification"  *ngIf="readNotificationsLength == 0"> You have no old notifications</div>
+<div class="notification" *ngIf="readNotificationsLength == 0"> You have no old notifications</div>
 
-<div class="notification"  *ngIf="readNotificationsLength != 0">Old notifications</div>
+<div class="notification" *ngIf="readNotificationsLength != 0">Old notifications</div>
 <div *ngFor="let notification of (readNotifications | async)" class="padding">
-    {{notification.review.sender.email}} has written a review about you! <button>Check it out!</button>
+    {{notification.review.sender.email}} has written a review about you! <button class="btn btn-lg btn-outline-primary"
+        (click)="open(content,notification.review)">Check it out!</button>
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Review by {{review.sender.email}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label *ngIf="review.assigment!=null">
+                    <h3>On {{review.assignment.name}}</h3>
+                </label>
+                <label *ngIf="review.assigment==null">On your profile</label>
+                <hr>
+                <label>{{review.description}}</label>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

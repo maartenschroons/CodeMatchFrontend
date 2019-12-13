@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import * as jwt_decode from 'jwt-decode';
-import { NotificationKind } from 'rxjs/internal/Notification';
 import { NotificationDto } from 'src/app/models/notification-dto.model';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-company-application-notifications',
@@ -16,10 +17,14 @@ export class CompanyApplicationNotificationsComponent implements OnInit {
 
   notifications: Observable<Notification[]>;
   notificationsLength: number;
+  readNotifications: Observable<Notification[]>;
+  readNotificationsLength: number;
   decoded;
   userID: number;
+  closeResult: string;
+  user: User;
 
-  constructor(private router: Router, private _appService: AppService) {
+  constructor(private router: Router, private _appService: AppService, private modalService: NgbModal) {
     this.instantiateLists()
   }
   instantiateLists() {
@@ -28,6 +33,9 @@ export class CompanyApplicationNotificationsComponent implements OnInit {
 
     this.notifications = this._appService.GetApplicationNotificationsByReceiver(this.userID);
     this.notifications.subscribe(result => { this.notificationsLength = result.length });
+
+    this.readNotifications = this._appService.GetReadApplicationNotificationsByCompany(this.userID);
+    this.readNotifications.subscribe(result => {this.readNotificationsLength= result.length});
   }
 
   ngOnInit() {
@@ -73,5 +81,23 @@ export class CompanyApplicationNotificationsComponent implements OnInit {
       })
     });
 
+  }
+  open(content, user: User) {
+    this.user = user;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 }

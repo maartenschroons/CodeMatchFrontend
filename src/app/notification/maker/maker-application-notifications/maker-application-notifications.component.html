@@ -2,11 +2,35 @@
 <div class="notification"  *ngIf="notificationsLength != 0"> You have new notifications</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
-    Your application for project {{notification.application.assignment.name}} has been accepted. <button click="">Get in contact with your employer.</button>
+    Your application for project {{notification.application.assignment.name}} has been accepted. <button class="btn btn-lg btn-outline-primary"
+    (click)="open(content,notification.sender)">Get in contact with your employer.</button>
 </div>
 
 <div class="notification"  *ngIf="readNotificationsLength == 0"> You have no old notifications</div>
 <div class="notification"  *ngIf="readNotificationsLength != 0">Old notifications</div>
 <div *ngFor="let notification of (readNotifications | async)" class="padding">
-    Your application for project {{notification.application.assignment.name}} has been accepted. <button click="">Get in contact with your employer.</button>
+    Your application for project {{notification.application.assignment.name}} has been accepted. <button class="btn btn-lg btn-outline-primary"
+    (click)="open(content,notification.sender)">Get in contact with your employer.</button>
 </div>
+
+
+<ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">{{company.company.name}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label>Company Email: {{company.email}}</label>
+                    <hr>
+                    <label>Company Phone number: {{company.phonenumber}}</label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Close</button>
+        </div>
+    </ng-template>

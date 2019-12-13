@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import * as jwt_decode from 'jwt-decode';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Review } from 'src/app/models/review.model';
 
 @Component({
   selector: 'app-company-review-notifications',
@@ -11,15 +13,16 @@ import * as jwt_decode from 'jwt-decode';
   styleUrls: ['./company-review-notifications.component.scss']
 })
 export class CompanyReviewNotificationsComponent implements OnInit {
-
+  closeResult: string;
   notifications: Observable<Notification[]>;
   readNotifications: Observable<Notification[]>;
   notificationsLength: number;
   readNotificationsLength: number;
   decoded;
   userID: number;
+  review: Review;
 
-  constructor(private router: Router, private _appService: AppService) {
+  constructor(private router: Router, private _appService: AppService, private modalService: NgbModal) {
     this.instantiateLists()
   }
   instantiateLists() {
@@ -40,4 +43,22 @@ export class CompanyReviewNotificationsComponent implements OnInit {
   ngOnInit() {
   }
 
+  open(content, review: Review) {
+    this.review = review;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 }
