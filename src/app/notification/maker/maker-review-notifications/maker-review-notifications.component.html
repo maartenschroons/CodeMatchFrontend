@@ -1,6 +1,13 @@
 <h3>Review Notifications</h3>
-<div *ngIf="notificationsLength == 0"> You have no new notifications</div>
+<div class="notification"  *ngIf="notificationsLength != 0"> You have new notifications</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
+    {{notification.review.sender.email}} has written a review about you! <button>Check it out!</button>
+</div>
+
+<div class="notification"  *ngIf="readNotificationsLength == 0"> You have no old notifications</div>
+
+<div class="notification"  *ngIf="readNotificationsLength != 0">Old notifications</div>
+<div *ngFor="let notification of (readNotifications | async)" class="padding">
     {{notification.review.sender.email}} has written a review about you! <button>Check it out!</button>
 </div>

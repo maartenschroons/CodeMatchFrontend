@@ -1,15 +1,15 @@
 import { User } from './user.model';
 
 export class NotificationDto {
-    sender: User;
-    receiver: User;
+    senderID: number;
+    receiverID: number;
     assignmentID: number;
     reviewID: number;
     applicationID: number;
     
-    constructor(sender: User, receiver: User, assignmentID: number,reviewID: number,applicationID: number){
-        this.sender = sender;
-        this.receiver = receiver;
+    constructor(sender: number, receiver: number, assignmentID: number,reviewID: number,applicationID: number){
+        this.senderID = sender;
+        this.receiverID = receiver;
         this.assignmentID = assignmentID;
         this.reviewID = reviewID;
         this.applicationID = applicationID;

@@ -16,7 +16,9 @@ import { Company } from 'src/app/models/company.model';
 })
 export class MakerApplicationNotificationsComponent implements OnInit {
   notifications: Observable<Notification[]>;
+  readNotifications: Observable<Notification[]>;
   notificationsLength: number;
+  readNotificationsLength: number;
   decoded;
   userID: number;
   
@@ -30,7 +32,14 @@ export class MakerApplicationNotificationsComponent implements OnInit {
     this.userID = this.decoded["UserID"];
 
     this.notifications = this._appService.GetApplicationNotificationsByReceiver(this.userID);
-    this.notifications.subscribe(result => { this.notificationsLength = result.length });
+    this.notifications.subscribe(result => { this.notificationsLength = result.length;
+      result.forEach(notification => {
+        notification.read = true;
+        this._appService.EditNotification(notification).subscribe();
+      }); });
+  
+    this.readNotifications = this._appService.GetReadApplicationNotificationsByReceiver(this.userID);
+    this.readNotifications.subscribe(result => { this.readNotificationsLength = result.length });
   }
 
 

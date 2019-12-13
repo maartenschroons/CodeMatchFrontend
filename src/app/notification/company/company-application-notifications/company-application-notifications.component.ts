@@ -40,16 +40,20 @@ export class CompanyApplicationNotificationsComponent implements OnInit {
   accept(notification: Notification) {
     notification.read = true;
     notification.application.isAccepted = true;
-
-    let not = new NotificationDto(notification.receiver, notification.sender, notification.assignmentID, notification.reviewID, notification.applicationID);
-
+    notification.application.assignment.status = "InProgress";
+    
+    let not = new NotificationDto(notification.receiver.userID, notification.sender.userID, 0, 0, notification.applicationID);
 
     this._appService.PostNotification(not).subscribe(result => {
       this._appService.EditNotification(notification).subscribe(result => {
-        this._appService.editApplication(notification.application).subscribe(result => { this.instantiateLists() });
+        this._appService.editApplication(notification.application).subscribe(result => {
+          this._appService.editAssignment(notification.application.assignment).subscribe(result => {
+            this.instantiateLists()
+          });
+        });
       });
       //console.log(result);
-      alert("You successfully applied! Now wait for the company to go over your application.");
+
     }, error => {
       alert(error);
     });;
@@ -59,8 +63,15 @@ export class CompanyApplicationNotificationsComponent implements OnInit {
   decline(notification: Notification) {
     notification.read = true;
     notification.application.isAccepted = false;
+  
 
-    this._appService.EditNotification(notification).subscribe(result => { this._appService.editApplication(notification.application).subscribe(result => { this.instantiateLists() }) });
+    this._appService.EditNotification(notification).subscribe(result => {
+      this._appService.editApplication(notification.application).subscribe(result => {
+
+        this.instantiateLists()
+
+      })
+    });
 
   }
 }

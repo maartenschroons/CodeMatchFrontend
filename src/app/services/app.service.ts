@@ -70,6 +70,11 @@ export class AppService {
   }
 
   //dashboard
+
+  editAssignment(assignment: Assignment){
+    return this.http.put<Assignment>("https://localhost:5001/api/Assignments/" + assignment.assignmentID, assignment);
+  }
+
   getUser(userID: number): any {
     return this.http.get<User>("https://localhost:5001/api/Users/" + userID);
   }
@@ -103,12 +108,22 @@ export class AppService {
     return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Review/" + userId);
   }
 
+  GetReadReviewNotificationsByReceiver(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Review/read/" + userId);
+  }
+
   GetApplicationNotificationsByReceiver(userId: number): Observable<Notification[]> {
     return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Application/" + userId);
+  }
+  GetReadApplicationNotificationsByReceiver(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Application/read/" + userId);
   }
 
   GetAssignmentNotificationsByReceiver(userId: number): Observable<Notification[]> {
     return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Assignment/" + userId);
+  }
+  GetReadAssignmentNotificationsByReceiver(userId: number): Observable<Notification[]> {
+    return this.http.get<Notification[]>("https://localhost:5001/api/Notifications/receiver/Assignment/read/" + userId);
   }
 
   GetApplicationNotificationsBySender(userId: number): Observable<Notification[]> {

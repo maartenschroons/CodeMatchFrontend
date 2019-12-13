@@ -1,6 +1,12 @@
 <h3>Application Notifications</h3>
-<div *ngIf="notificationsLength == 0"> You have no new notifications</div>
+<div class="notification"  *ngIf="notificationsLength != 0"> You have new notifications</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
+    Your application for project {{notification.application.assignment.name}} has been accepted. <button click="">Get in contact with your employer.</button>
+</div>
+
+<div class="notification"  *ngIf="readNotificationsLength == 0"> You have no old notifications</div>
+<div class="notification"  *ngIf="readNotificationsLength != 0">Old notifications</div>
+<div *ngFor="let notification of (readNotifications | async)" class="padding">
     Your application for project {{notification.application.assignment.name}} has been accepted. <button click="">Get in contact with your employer.</button>
 </div>

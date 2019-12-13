@@ -1,6 +1,8 @@
 <h2>Application Notifications</h2>
-<div *ngIf="notificationsLength == 0"> You have no new notifications</div>
+<div class="notification" *ngIf="notificationsLength != 0"> You have new applications</div>
+<div class="notification" *ngIf="notificationsLength == 0"> There are no open applications!</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
-    <a (click)="showMaker()">{{notification.application.maker.nickname}}</a> has applied for your project {{notification.application.assignment.name}}.<button (click)="accept(notification)">Accept</button><button (click)="decline(notification)">Decline</button>
+    <a (click)="showMaker()">{{notification.application.maker.nickname}}</a> has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
 </div>
+

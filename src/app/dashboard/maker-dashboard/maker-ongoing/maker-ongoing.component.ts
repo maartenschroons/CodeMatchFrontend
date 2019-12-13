@@ -37,5 +37,6 @@ export class MakerOngoingComponent implements OnInit {
     this._appService.gekozenAssignment.next(assignment);
     this.router.navigate(["detailAssignment"]);
  }
+ 
 
 }

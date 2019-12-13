@@ -38,4 +38,8 @@ export class OngoingAssignmentsComponent implements OnInit {
     this.router.navigate(["detailAssignment"]);
  }
 
+ complete(a: Assignment){
+  a.status="Completed";
+  this._appService.editAssignment(a).subscribe(result =>{this.instantiateLists()});
+}
 }
