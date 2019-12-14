@@ -1,12 +1,14 @@
 import { Assignment } from './assignment.model';
 import { Observable } from 'rxjs';
 import { CompanyTag } from './company-tag.model';
+import { User } from './user.model';
 
 export class Company {
     companyID: number;
     name: string;
     streetAdress: string;
     postalCode: number;
+    user: User;
     assignments: Observable<Assignment>;
     companyTags: Observable<CompanyTag>;
 

@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
     else if (this.role == "Company") {
       this.makerCheck = false;
     }
-    console.log(this.decoded);
+    //console.log(this.decoded);
     this._appService.getUser(this.userID).subscribe(result => { this.name = result.email });
     this._appService.GetNotificationsByReceiver(this.userID).subscribe(result => { this.notificationAmount = result.length });
   }

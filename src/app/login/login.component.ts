@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this._authenticateService.authenticate(this.login).subscribe(result => {
+      //console.log(result);
+
       localStorage.setItem("token", result.token);
       
       this.router.navigateByUrl('/dashboard');

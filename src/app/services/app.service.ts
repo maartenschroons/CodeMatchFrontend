@@ -28,7 +28,7 @@ import { ReviewDto } from '../models/review-dto.model';
 export class AppService {
   gekozenAssignment = new BehaviorSubject(new Assignment(0, "", "", "", "", "", null, null, null, null));
   gekozenUser = new BehaviorSubject(new User(0,"","","","",null,0,null,0,null,null,null));
-  receiverID = new BehaviorSubject({receiverid: 0, type: ""});
+  receiverID = new BehaviorSubject({receiverid: 0,name:"", type: "", description: ""});
 
   constructor(private http: HttpClient) { }
 
@@ -222,7 +222,11 @@ export class AppService {
   }
 
   //Reviews
-  GetReviewBySenderIdReceiverIdAssignmentId(reviewDto: ReviewDto): Observable<Review[]> {
-    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/review/" + reviewDto);
+  GetReviewBySenderIdReceiverIdAssignmentId(reviewDto: ReviewDto): Observable<Review> {
+    return this.http.get<Review>("https://localhost:5001/api/Reviews/review/" + reviewDto);
+  }
+
+  addReview(reviewDto: ReviewDto) {
+    return this.http.post<ReviewDto>("https://localhost:5001/api/Reviews/", reviewDto);
   }
 }

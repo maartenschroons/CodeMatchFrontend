@@ -3,36 +3,28 @@
         <div class="d-flex justify-content-start">
             <div class="card text-start w-100">
                 <h3 class="card-header">
-                    <span class="font-weight-bold"> Company:</span>
+                    <span class="font-weight-bold">Write a review about: {{receiverID.name}}</span>
                 </h3>
                 <div class="card-body">
-                    <h5 class="card-title"><span class="font-weight-bold">Adress:</span> </h5>
-                    <p class="card-text"><span class="font-weight-bold">Description: </span></p>
-                    <hr>
-                    <p class="card-text"><span class="font-weight-bold">Tags: </span>
-                        <span 
-                            class="card-text border border-dark rounded p-1 m-2"></span>
-                    </p>
-                    <hr>
-                    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-                            <div class="form-group">
+                    <form *ngIf="receiverID.description==''" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                            <div  class="form-group">
                                 <label>Description</label>
-                                <input type="text" formControlName="description" class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.description.errors}" />
+                                <textarea type="text" rows="5" formControlName="description" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.description.errors}" ></textarea>
                                 <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
                                     <div *ngIf="f.description.errors.required">Fill in a description</div>
                                 </div>
                             </div>
-                            <p><button mat-raised-button color="primary" type="submit">Submit</button></p>
+                            <p><button class="button button-info" color="primary" type="submit">Submit</button></p>
                         </form>
-                    <hr >
-                    <div >
-                        <h5 class="card-title">Use the button below to apply for the assignment!</h5>
-                        <a class="btn btn-primary" (click)="applyForAssignment()">Apply!</a>
-                    </div>
-                    <div >
-                            <h5 class="card-title">You already applied for this assignment</h5>
-                        </div>
+                        <form *ngIf="receiverID.description" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                                <div  class="form-group">
+                                    <label>Description</label>
+                                    <textarea type="text" rows="5" readonly  class="form-control-plaintext border" >{{receiverID.description}}</textarea>
+                                    
+                                </div>
+                            </form>
+                    <!-- <p>{{reviewForm.value | json}}</p>  -->
                 </div>
                 <div class="card-footer text-muted">
                     {{now | date:'dd-MMM-yyyy HH:mm'}}

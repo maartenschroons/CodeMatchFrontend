@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { Application } from './application.model';
 import { MakerTag } from './maker-tag.model';
+import { User } from './user.model';
 
 export class Maker {
     makerID: number;
@@ -10,6 +11,7 @@ export class Maker {
     dob: Date;
     linkedIn: string;
     experience: string;
+    user: User;
     applications: Observable<Application>;
     makerTags: Observable<MakerTag>;
 

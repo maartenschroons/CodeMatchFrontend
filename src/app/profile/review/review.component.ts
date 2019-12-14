@@ -27,28 +27,59 @@ export class ReviewComponent implements OnInit {
     this._appService.getUserByIdAndRol(this.userId).subscribe(result => {
       this.user = result;
       this.isLoaded = true;
-      //console.log(this.user);
+      console.log(this.user);
     });
   }
 
-  bekijkReview(any: any) {
+  bekijkReview(any: any, id: number) {
+    var bestaat: boolean;
+    var description = null;
     console.log(any);
-    if (any.makerID) {
+    if (any.makerID && any.makerID != 0) {
       this.reviewMaker = any;
-      this._appService.receiverID.next({receiverid: this.reviewMaker.makerID, type: "maker"});
-    } else {
-      if (any.companyID) {
-        this.reviewCompany = any;
-        this._appService.receiverID.next({receiverid: this.reviewCompany.companyID, type: "company"});
+      this.reviewMaker.user.receivedReviews.forEach(x => {
+        if (x.userIDSender == parseInt(this.userId.toString())) {
+          bestaat= true;
+          description = x.description;
+        }
+      });
+      if (bestaat) {
+        this._appService.receiverID.next({receiverid: this.reviewMaker.user.userID, name: this.reviewMaker.firstname, type: "maker", description: description});
       } else {
-        if (any.assignmentID) {
+        this._appService.receiverID.next({receiverid: this.reviewMaker.user.userID, name: this.reviewMaker.firstname, type: "maker", description: ""});
+      }
+    } else {
+      if (any.companyID && any.companyID != 0) {
+        this.reviewCompany = any;
+        this.reviewCompany.user.receivedReviews.forEach(x => {
+          if (x.userIDSender == this.userId) {
+            bestaat = true;
+            description = x.description;
+          }
+        });
+        if (bestaat) {
+          this._appService.receiverID.next({receiverid: this.reviewCompany.user.userID, name: this.reviewCompany.name, type: "company",description: description});
+        } else {
+          this._appService.receiverID.next({receiverid: this.reviewCompany.user.userID, name: this.reviewCompany.name, type: "company",description: ""});
+        }
+      } else {
+        if (any.assignmentID && any.assignmentID != 0) {
           this.reviewAssignment = any;
-          this._appService.receiverID.next({receiverid: this.reviewAssignment.assignmentID, type: "assignment"});
+          console.log(this.reviewAssignment);
+          this.reviewAssignment.reviews.forEach(x => {
+            if (x.userIDSender == this.userId) {
+              bestaat = true;
+              description = x.description;
+            }
+          });
+          if (bestaat) {
+            this._appService.receiverID.next({receiverid: this.reviewAssignment.assignmentID, name: this.reviewAssignment.name, type: "a",description: description});
+          } else {
+            this._appService.receiverID.next({receiverid: this.reviewAssignment.assignmentID, name: this.reviewAssignment.name, type: "a",description: ""});
+          }
         }
       }
     }
-    
-    
     this.router.navigate(["bekijkReview"]);
   }
 
