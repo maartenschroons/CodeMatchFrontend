@@ -38,10 +38,10 @@ export class AdminAssignmentsComponent implements OnInit {
     //console.log(assignment);
     this._appService.gekozenAssignment.next(assignment);
     this.router.navigate(["detailAssignment"]);
- }
+  }
 
- delete(a: Assignment){
-this._appService.deleteAssignment(a.assignmentID).subscribe(result =>{this.instantiateLists()});
- }
+  delete(a: Assignment) {
+    this._appService.deleteAssignment(a.assignmentID).subscribe(result => { this.instantiateLists() });
+  }
 
 }
