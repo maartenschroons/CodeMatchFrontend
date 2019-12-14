@@ -12,7 +12,7 @@ import { MakerCompletedComponent } from './maker-dashboard/maker-completed/maker
 
 
 @NgModule({
-  declarations: [DashboardComponent, MakerDashboardComponent, CompanyDashboardComponent, InitialAssignmentsComponent, OngoingAssignmentsComponent, CompletedAssignmentsComponent, MakerOngoingComponent, MakerCompletedComponent],
+  declarations: [],
   imports: [
     CommonModule
   ]
