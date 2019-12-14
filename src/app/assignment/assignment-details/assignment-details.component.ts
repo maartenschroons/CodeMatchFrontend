@@ -15,17 +15,18 @@ export class AssignmentDetailsComponent implements OnInit {
   assignment: Assignment;
   applicationDto: ApplicationDto;
   makerID: number;
-  userID: number;
+  userID: string;
   alreadyApplied: boolean;
   public now: Date = new Date();
+  
 
   constructor(private _appService: AppService, private router: Router) {
     var decoded = jwt_decode(localStorage.getItem("token"));
     this.makerID = decoded["MakerID"];
-    this.userID =decoded["UserID"];
+    this.userID = decoded["UserID"];
     this._appService.gekozenAssignment.subscribe(e=> {
       this.assignment = e;
-      console.log(this.assignment);
+      //console.log(this.assignment);
       // Als er gerefresht wordt dan is de poll leeg -> stuur terug naar poll component
       if (this.assignment.assignmentID == 0) {
         this.router.navigate(["searchAssignment"]);
@@ -39,8 +40,6 @@ export class AssignmentDetailsComponent implements OnInit {
 
   checkIfAlreadyApplied() {
     this.assignment.applications.forEach(a => {
-      console.log(a.makerID);
-      console.log(this.makerID);
       if (a.makerID == this.makerID) {
         this.alreadyApplied = true;
       } else {
@@ -52,8 +51,13 @@ export class AssignmentDetailsComponent implements OnInit {
   applyForAssignment() {
     this.applicationDto = new ApplicationDto(this.makerID,this.assignment,false);
     this._appService.postNewApplication(this.applicationDto).subscribe(result => {
-      //console.log(result);
+
       alert("You successfully applied! Now wait for the company to go over your application.");
+      let notificationDto: NotificationDto = new NotificationDto(parseInt(this.userID),this.assignment.company.user.userID,0,0,result.applicationID);
+      this._appService.PostNotification(notificationDto).subscribe(result => {
+      }, error => {
+        alert(error);
+      });
       this.router.navigate(["searchAssignment"]);
     }, error => {
       alert(error);

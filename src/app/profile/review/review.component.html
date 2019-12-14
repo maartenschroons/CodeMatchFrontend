@@ -10,13 +10,10 @@
                         <h6 class="card-price text-center">Makers</h6>
                         <h5 class="card-title text-muted text-uppercase text-center">You worked with</h5>
                         <hr>
-                        <div class="scrollable">
-                            <ul class="fa-ul">
-                                <div *ngFor="let a of user.maker.applications">
-                                    <li *ngFor="let ap of a.assignment.applications" (click)="bekijkReview(ap.maker)"
-                                        class="btn btn-primary">{{ap.maker.firstname}}:<br>{{a.assignment.name}}</li>
-                                </div>
-                            </ul>
+                        <div class="scrollable text-center">
+                                    <div *ngFor="let ap of makerList" (click)="bekijkReview(ap)"
+                                        class="btn btn-primary  w-75 mb-3">{{ap.firstname}}</div>
+
                         </div>
                     </div>
                 </div>
@@ -29,13 +26,11 @@
                         <h6 class="card-price text-center">Companies</h6>
                         <h5 class="card-title text-muted text-uppercase text-center">You worked with</h5>
                         <hr>
-                        <div class="scrollable">
-                        <ul class="fa-ul justify-content-start">
-                            <li *ngFor="let a of user.maker.applications" (click)="bekijkReview(a.assignment.company)"
-                                class="btn btn-primary">
-                                {{a.assignment.company.name}}:<br>{{a.assignment.name}}</li>
-                        </ul>
-                    </div>
+                        <div class="scrollable text-center">
+                            <div *ngFor="let a of companyList" (click)="bekijkReview(a)"
+                                class="btn btn-primary w-75 mb-3">
+                                {{a.name}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,13 +42,11 @@
                         <h6 class="card-price text-center">Assignments</h6>
                         <h5 class="card-title text-muted text-uppercase text-center">You worked on</h5>
                         <hr>
-                        <div class="scrollable">
-                        <ul class="fa-ul">
-                            <li *ngFor="let a of user.maker.applications" (click)="bekijkReview(a.assignment)"
-                                class="btn btn-primary">{{a.assignment.name}}
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="scrollable text-center">
+                            <div *ngFor="let a of user.maker.applications" (click)="bekijkReview(a.assignment)"
+                                class="btn btn-primary w-75 mb-3">{{a.assignment.name}}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,47 +56,41 @@
 
 <!-- Company section -->
 <section *hasPermission="['read_company_profile']" class="pricing py-5">
-        <div  *ngIf="isLoaded" class="container">
-            <h1>Make a review!</h1>
-            <div class="row">
-                <!-- Maker Tier -->
-                <div class="col-lg-4">
-                    <div class="card mb-5 mb-lg-0">
-                        <div class="card-body">
-                            <h5 class="card-title text-muted text-uppercase text-center">List of</h5>
-                            <h6 class="card-price text-center">Makers</h6>
-                            <h5 class="card-title text-muted text-uppercase text-center">You worked with</h5>
-                            <hr>
-                            <div class="scrollable">
-                                <ul class="fa-ul">
-                                    <div *ngFor="let a of user.company.assignments">
-                                        <li *ngFor="let ap of a.applications" (click)="bekijkReview(ap.maker)"
-                                            class="btn btn-primary">{{ap.maker.firstname}}: {{a.name}}</li>
-                                    </div>
-                                </ul>
-                            </div>
+    <div *ngIf="isLoaded" class="container">
+        <h1>Make a review!</h1>
+        <div class="row">
+            <!-- Maker Tier -->
+            <div class="col-lg-4">
+                <div class="card mb-5 mb-lg-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted text-uppercase text-center">List of</h5>
+                        <h6 class="card-price text-center">Makers</h6>
+                        <h5 class="card-title text-muted text-uppercase text-center">You worked with</h5>
+                        <hr>
+                        <div class="scrollable text-center">
+                            <div *ngFor="let ap of makerList" (click)="bekijkReview(ap)"
+                                class="btn btn-primary w-75 mb-3">{{ap.firstname}}</div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Assignemt Tier -->
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-muted text-uppercase text-center">List of</h5>
-                            <h6 class="card-price text-center">Assignments</h6>
-                            <h5 class="card-title text-muted text-uppercase text-center">You created</h5>
-                            <hr>
-                            <div class="scrollable">
-                            <ul class="fa-ul">
-                                <li *ngFor="let a of user.company.assignments" (click)="bekijkReview(a)"
-                                    class="btn btn-primary">{{a.name}}
-                                </li>
-                            </ul>
-                        </div>
+            </div>
+
+            <!-- Assignemt Tier -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted text-uppercase text-center">List of</h5>
+                        <h6 class="card-price text-center">Assignments</h6>
+                        <h5 class="card-title text-muted text-uppercase text-center">You created</h5>
+                        <hr>
+                        <div class="scrollable text-center">
+                            <div *ngFor="let a of user.company.assignments" (click)="bekijkReview(a)"
+                                class="btn btn-primary w-75 mb-3">{{a.name}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>

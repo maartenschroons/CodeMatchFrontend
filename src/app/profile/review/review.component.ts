@@ -16,25 +16,60 @@ export class ReviewComponent implements OnInit {
   user: User;
   userId: number;
   isLoaded: boolean = false;
+  makerList: Maker[] = [];
+  companyList: Company[] =[];
   reviewMaker: Maker;
   reviewCompany: Company;
   reviewAssignment: Assignment;
 
   constructor(private _appService: AppService, private router: Router) {
+    //Get current userid
     let decodedToken = jwt_decode(localStorage.getItem('token'));
     this.userId = decodedToken['UserID'];
 
+    //Get the user and attributes
     this._appService.getUserByIdAndRol(this.userId).subscribe(result => {
       this.user = result;
       this.isLoaded = true;
-      console.log(this.user);
+      //Fill in the list so only unique makers and companies appear in the front
+      if (this.user.makerID) {
+        let ids: number[] = [];
+        let idsCompanies: number[] = [];
+        this.user.maker.applications.forEach(x => {
+          //Search all unique companies, which the user worked with
+          if (!idsCompanies.includes(x.assignment.company.companyID)) {
+            this.companyList.push(x.assignment.company);
+            idsCompanies.push(x.assignment.company.companyID);
+          }
+          x.assignment.applications.forEach(y => {
+            //Search all the unique makers the user worked with
+            if (!ids.includes(y.maker.makerID)) {
+              this.makerList.push(y.maker);
+              ids.push(y.maker.makerID);
+            }
+            
+          });
+        });
+        //When a company is logged in, only the maker list has to be adjusted
+      } else {
+        let ids: number[] = [];
+        this.user.company.assignments.forEach(x => {
+          x.applications.forEach(y => {
+            if (!ids.includes(y.maker.makerID)) {
+              this.makerList.push(y.maker);
+              ids.push(y.maker.makerID);
+            }
+          });
+        });
+      }
     });
+    
   }
 
   bekijkReview(any: any, id: number) {
     var bestaat: boolean;
     var description = null;
-    console.log(any);
+    //console.log(any);
     if (any.makerID && any.makerID != 0) {
       this.reviewMaker = any;
       this.reviewMaker.user.receivedReviews.forEach(x => {
@@ -65,7 +100,7 @@ export class ReviewComponent implements OnInit {
       } else {
         if (any.assignmentID && any.assignmentID != 0) {
           this.reviewAssignment = any;
-          console.log(this.reviewAssignment);
+          //console.log(this.reviewAssignment);
           this.reviewAssignment.reviews.forEach(x => {
             if (x.userIDSender == this.userId) {
               bestaat = true;
