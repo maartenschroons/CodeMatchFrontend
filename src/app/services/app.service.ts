@@ -22,6 +22,7 @@ import { MakerTagDTO } from '../models/maker-tag-dto.model';
 import { CompanyTagDTO } from '../models/company-tag-dto.model';
 import { ReviewDto } from '../models/review-dto.model';
 import { AssignmentTag } from '../models/assignment-tag.model';
+import { Role } from '../models/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -202,6 +203,15 @@ export class AppService {
 
   deleteCompanyTag(companyId: number, tagId: number) {
     return this.http.delete<CompanyTag>("https://localhost:5001/api/CompanyTags/" + companyId + "/" + tagId);
+  }
+
+  //Role
+  getCompanyRole() {
+    return this.http.get<Role>("https://localhost:5001/api/Roles/getCompany");
+  }
+
+  getMakerRole() {
+    return this.http.get<Role>("https://localhost:5001/api/Roles/getMaker");
   }
 
   //Application

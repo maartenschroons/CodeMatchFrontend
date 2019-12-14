@@ -51,11 +51,15 @@ export class MakerRegisterComponent implements OnInit {
     
     this.appService.checkMail(this.modelUser.email).subscribe(result => {
       if (!result) {
-        this.appService.addMaker(this.modelMaker).subscribe(result => {
-          this.modelUser.maker = result;
-          this.modelUser.makerID = result.makerID;
-          console.log(this.modelUser);
-          this.appService.addUser(this.modelUser).subscribe(result => {
+        this.appService.addMaker(this.modelMaker).subscribe(result1 => {
+          this.modelUser.maker = result1;
+          this.modelUser.makerID = result1.makerID;
+          
+          this.appService.getMakerRole().subscribe(result2 => {
+            this.modelUser.role = result2;
+          });
+
+          this.appService.addUser(this.modelUser).subscribe(result3 => {
             this.router.navigateByUrl("/login");
           });
         })
