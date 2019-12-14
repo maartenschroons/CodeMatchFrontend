@@ -10,21 +10,26 @@ import { HttpClient} from '@angular/common/http';
 export class AuthenticateService {
 
   constructor(private _httpClient: HttpClient) { }
-
+  isLoggedin = new BehaviorSubject(false);
+  
   //Log in the user
   authenticate(userLogin: UserLogin): any {
     return this._httpClient.post<UserLogin>("https://localhost:5001/api/Users/authenticate", userLogin); 
   }
 
-
-
-  isLoggedIn() {
+  checkLogin() {
     if (localStorage.getItem("token")) {
-      return true;
-    } else {
-      return false;
+      this.isLoggedin.next(true);
     }
   }
+
+  // isLoggedIn() {
+  //   if (localStorage.getItem("token")) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   isLoggedOut() {
     localStorage.setItem("token", "");

@@ -7,17 +7,31 @@
                         <a href="">
                                 <img src="../assets/images/logo_transparent.png" alt="MatchIT logo" height="150px">
                         </a>
-                        <a mat-list-item routerLink="/" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Home</a>
-                        <a mat-list-item routerLink="/profile" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Account</a>
-                        <a mat-list-item routerLink="/notification" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Notifications</a>
-                        <a mat-list-item routerLink="searchAssignment" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Assignments</a>
-                        <a mat-list-item routerLink="admin" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{ exact: true }">Admin</a>
+
+                        <div *ngIf="login; else inactiveDiv">
+                                <a mat-list-item routerLink="/" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                                <a mat-list-item routerLink="/login" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Login</a>
+                                <a mat-list-item routerLink="/register" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Register</a>
+                        </div>
+                        <ng-template #inactiveDiv>
+                                <a mat-list-item routerLink="/" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                                <a mat-list-item routerLink="/profile" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Account</a>
+                                <a mat-list-item routerLink="/notification" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Notifications</a>
+                                <a mat-list-item routerLink="searchAssignment" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Assignments</a>
+                                <a mat-list-item routerLink="admin" routerLinkActive="active"
+                                        [routerLinkActiveOptions]="{ exact: true }">Admin</a>
+                                <a mat-list-item routerLinkActive="active" (click)="logOut()"
+                                        [routerLinkActiveOptions]="{ exact: true }">Logout</a>
+                        </ng-template>
                         <hr>
+
                 </mat-nav-list>
         </mat-sidenav>
         <router-outlet></router-outlet>
