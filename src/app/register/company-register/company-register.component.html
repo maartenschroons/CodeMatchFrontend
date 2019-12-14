@@ -1,0 +1,63 @@
+<form [formGroup]="registerFormCompany" (ngSubmit)="onSubmit()">
+    <h1>Company</h1>
+    <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+        <div fxFlex="50%">
+
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Company name" formControlName="name"
+                        [(ngModel)]="modelCompany.name" type="text" name="name" />
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelUser.email"
+                        type="email" name="Email" />
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input matInput class="password" placeholder="Password" formControlName="password"
+                        [(ngModel)]="modelUser.password" type="password" name="Password" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Confirm password" formControlName="cpassword" type="password"
+                        name="CPassword" />
+                </mat-form-field>
+            </p>
+        </div>
+        <div fxFlex="50%">
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Phone number" formControlName="phonenumber"
+                        [(ngModel)]="modelUser.phonenumber" type="text" name="Phonenumber" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Biography" formControlName="biography"
+                        [(ngModel)]="modelUser.biography" type="text" name="Biography" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="StreetAdress" formControlName="streetAdress"
+                        [(ngModel)]="modelCompany.streetAdress" type="text" name="StreetAdress" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Postal code" formControlName="postalCode"
+                        [(ngModel)]="modelCompany.postalCode" type="text" name="PostalCode" />
+                </mat-form-field>
+            </p>
+        </div>
+    </div>
+    <p>
+        <button [disabled]="!registerFormCompany.valid" mat-raised-button color="primary"
+            type="submit">Submit</button>
+    </p>
+</form>

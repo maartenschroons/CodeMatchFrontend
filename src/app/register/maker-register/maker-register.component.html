@@ -1,0 +1,86 @@
+<form [formGroup]="registerFormMaker" (ngSubmit)="onSubmit()">
+    <h1>Maker</h1>
+    <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+        <div fxFlex="50%">
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Username" formControlName="username"
+                        [(ngModel)]="modelMaker.nickname" type="text" name="username" />
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="First name" formControlName="first"
+                        [(ngModel)]="modelMaker.firstname" type="text" name="FirstName" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Last name" formControlName="last" [(ngModel)]="modelMaker.lastname"
+                        type="text" name="Lastname" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" [(ngModel)]="modelUser.email"
+                        type="email" name="Email" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input class="password" matInput placeholder="Password" formControlName="password"
+                        [(ngModel)]="modelUser.password" type="password" name="Password" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Confirm password" formControlName="cpassword" type="password"
+                        name="CPassword" />
+                </mat-form-field>
+            </p>
+        </div>
+        <div fxFlex="50%">
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Phone number" formControlName="phonenumber"
+                        [(ngModel)]="modelUser.phonenumber" type="text" name="Phonenumber" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date of Birth"
+                        [(ngModel)]=modelMaker.dob>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="LinkedIn Link" formControlName="linkedin"
+                        [(ngModel)]="modelMaker.linkedIn" type="text" name="LinkedIn" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="Biography" formControlName="biography"
+                        [(ngModel)]="modelUser.biography" type="text" name="Biography" />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <textarea matInput placeholder="Experience" formControlName="experience"
+                        [(ngModel)]="modelMaker.experience" type="text" name="Experience"></textarea>
+                </mat-form-field>
+            </p>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <p class="ml-4">
+            <button [disabled]="!registerFormMaker.valid" mat-raised-button color="primary"
+                type="submit">Submit</button>
+        </p>
+    </div>
+</form>

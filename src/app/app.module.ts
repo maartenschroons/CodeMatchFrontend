@@ -8,7 +8,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
-import { LoginModule } from './login/login.module';
 import { SearchAssignmentComponent } from './assignment/search-assignment/search-assignment.component';
 import { ProfileModule } from './profile/profile.module';
 import { OverviewComponent } from './profile/overview/overview.component';
@@ -17,15 +16,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecurityInterceptor } from './security.interceptor';
 import { AssignmentModule } from './assignment/assignment.module';
 import { NotificationComponent } from './notification/notification.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AssignmentDetailsComponent } from './assignment/assignment-details/assignment-details.component';
-import { MakerDashboardComponent } from './dashboard/maker-dashboard/maker-dashboard.component';
-import { CompanyDashboardComponent } from './dashboard/company-dashboard/company-dashboard.component';
-import { InitialAssignmentsComponent } from './dashboard/company-dashboard/initial-assignments/initial-assignments.component';
-import { OngoingAssignmentsComponent } from './dashboard/company-dashboard/ongoing-assignments/ongoing-assignments.component';
-import { CompletedAssignmentsComponent } from './dashboard/company-dashboard/completed-assignments/completed-assignments.component';
-import { MakerCompletedComponent } from './dashboard/maker-dashboard/maker-completed/maker-completed.component';
-import { MakerOngoingComponent } from './dashboard/maker-dashboard/maker-ongoing/maker-ongoing.component';
 import { MakerComponent } from './notification/maker/maker.component';
 import { MakerReviewNotificationsComponent } from './notification/maker/maker-review-notifications/maker-review-notifications.component';
 import { MakerApplicationNotificationsComponent } from './notification/maker/maker-application-notifications/maker-application-notifications.component';
@@ -40,6 +31,8 @@ import { AdminReviewsComponent } from './admin/admin-reviews/admin-reviews.compo
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { BekijkReviewComponent } from './profile/bekijk-review/bekijk-review.component';
 import { AddAssignmentComponent } from './assignment/add-assignment/add-assignment.component';
+import { MakerRegisterComponent } from './register/maker-register/maker-register.component';
+import { CompanyRegisterComponent } from './register/company-register/company-register.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -73,7 +66,9 @@ const appRoutes: Routes = [
     AdminAssignmentsComponent,
     AdminReviewsComponent,
     AdminUsersComponent,
-    AddAssignmentComponent
+    AddAssignmentComponent,
+    MakerRegisterComponent,
+    CompanyRegisterComponent
   ],
   imports: [
     BrowserModule,

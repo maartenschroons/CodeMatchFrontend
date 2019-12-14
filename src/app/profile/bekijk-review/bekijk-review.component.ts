@@ -77,7 +77,7 @@ export class BekijkReviewComponent implements OnInit {
         });
       } else if (this.receiverID.type == "a") {
         this._appService.getAssignmentByID(result.assignmentID).subscribe(result => {
-          console.log(result.applications);
+        
           result.applications.forEach(application => {
             if (parseInt(this.userId) != application.maker.makerID && application.isAccepted) {
               this.notificationDto.receiverID = application.maker.user.userID;
