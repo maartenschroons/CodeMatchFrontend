@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   name: string;
   notificationAmount: number;
   messageAmount: number = 2;
-  makerCheck: boolean = false;
+  makerCheck: boolean;
   decoded;
   role:string;
   userID: number;

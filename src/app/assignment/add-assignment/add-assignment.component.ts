@@ -10,7 +10,7 @@ import { User } from 'src/app/models/user.model';
 @Component({
   selector: 'app-add-assignment',
   templateUrl: './add-assignment.component.html',
-  styleUrls: ['./add-assignment.component.scss']
+  styleUrls: []
 })
 export class AddAssignmentComponent implements OnInit {
 

@@ -28,8 +28,8 @@ import { AssignmentTag } from '../models/assignment-tag.model';
 })
 export class AppService {
   gekozenAssignment = new BehaviorSubject(new Assignment(0, "", "", "", "", "", null, null, null, null));
-  gekozenUser = new BehaviorSubject(new User(0,"","","","",null,0,null,0,null,null,null));
-  receiverID = new BehaviorSubject({receiverid: 0,name:"", type: "", description: ""});
+  gekozenUser = new BehaviorSubject(new User(0, "", "", "", "", null, 0, null, 0, null, null, null));
+  receiverID = new BehaviorSubject({ receiverid: 0, name: "", type: "", description: "" });
 
   constructor(private http: HttpClient) { }
 
@@ -193,7 +193,7 @@ export class AppService {
   }
 
   addCompanyTag(companyTag: CompanyTagDTO) {
-    return this.http.post<CompanyTagDTO>("https://localhost:5001/api/CompanyTags" ,companyTag);
+    return this.http.post<CompanyTagDTO>("https://localhost:5001/api/CompanyTags", companyTag);
   }
 
   deleteMakerTag(makerId: number, tagId: number) {
@@ -214,35 +214,39 @@ export class AppService {
   }
 
   //admin
-  getAllUsers():Observable<User[]> {
+  getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>("https://localhost:5001/api/Users");
   }
 
-  getAllReviewsBySender(id: number):Observable<Review[]>{
-    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/sender/"+id);
+  getAllReviewsBySender(id: number): Observable<Review[]> {
+    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/sender/" + id);
   }
 
-  getAllReviewsByReceiver(id: number):Observable<Review[]>{
-    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/receiver/"+id);
+  getAllReviewsByReceiver(id: number): Observable<Review[]> {
+    return this.http.get<Review[]>("https://localhost:5001/api/Reviews/receiver/" + id);
   }
   getAllAssignmentsAdmin(): Observable<Assignment[]> {
     return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
   }
 
-  deleteUser(id: number){
-    return this.http.delete<User>("https://localhost:5001/api/Users/"+id);
+  getAssignmentByID(id: number): Observable<Assignment> {
+    return this.http.get<Assignment>("https://localhost:5001/api/assignments/" + id);
   }
 
-  deleteReview(id: number){
-    return this.http.delete<Review>("https://localhost:5001/api/Reviews/"+id);
+  deleteUser(id: number) {
+    return this.http.delete<User>("https://localhost:5001/api/Users/" + id);
   }
 
-  deleteAssignment(id: number){
-    return this.http.delete<Assignment>("https://localhost:5001/api/Assignments/"+id);
+  deleteReview(id: number) {
+    return this.http.delete<Review>("https://localhost:5001/api/Reviews/" + id);
   }
 
-  deleteMaker(id: number){
-    return this.http.delete<Assignment>("https://localhost:5001/api/Assignments/"+id);
+  deleteAssignment(id: number) {
+    return this.http.delete<Assignment>("https://localhost:5001/api/Assignments/" + id);
+  }
+
+  deleteMaker(id: number) {
+    return this.http.delete<Assignment>("https://localhost:5001/api/Assignments/" + id);
   }
 
   //Reviews
@@ -258,14 +262,14 @@ export class AppService {
   getUserById(id: number) {
     return this.http.get<User>("https://localhost:5001/api/users/" + id);
   }
-  
+
   //AssignmentTag
   addAssignmentTag(assignmentTag: AssignmentTag) {
-    return this.http.post<AssignmentTag>("https://localhost:5001/api/applications/" , assignmentTag);
+    return this.http.post<AssignmentTag>("https://localhost:5001/api/applications/", assignmentTag);
   }
 
   addAssignmentTags(assignmentID: number, tagList: Tag[]) {
     console.log(assignmentID);
-    return this.http.post<AssignmentTag>("https://localhost:5001/api/assignmentTags/addAssignmentTags?assignmentID=" + assignmentID , tagList);
+    return this.http.post<AssignmentTag>("https://localhost:5001/api/assignmentTags/addAssignmentTags?assignmentID=" + assignmentID, tagList);
   }
 }

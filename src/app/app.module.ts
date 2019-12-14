@@ -18,7 +18,6 @@ import { SecurityInterceptor } from './security.interceptor';
 import { AssignmentModule } from './assignment/assignment.module';
 import { NotificationComponent } from './notification/notification.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { AssignmentDetailsComponent } from './assignment/assignment-details/assignment-details.component';
 import { MakerDashboardComponent } from './dashboard/maker-dashboard/maker-dashboard.component';
 import { CompanyDashboardComponent } from './dashboard/company-dashboard/company-dashboard.component';
