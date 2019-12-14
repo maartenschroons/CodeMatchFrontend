@@ -31,7 +31,11 @@ export class AdminReviewsComponent implements OnInit {
       }
     });
     this.sentReviews = this._appService.getAllReviewsBySender(this.user.userID);
-    this.sentReviews.subscribe(result => { this.sentReviewsLength = result.length });
+    this.sentReviews.subscribe(result => { 
+      this.sentReviewsLength = result.length ;
+      console.log(result)
+    });
+
 
     this.receivedReviews = this._appService.getAllReviewsByReceiver(this.user.userID);
     this.receivedReviews.subscribe(result => { this.receivedReviewsLength = result.length });

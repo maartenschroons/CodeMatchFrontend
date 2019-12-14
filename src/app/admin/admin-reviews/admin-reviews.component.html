@@ -2,11 +2,19 @@
 <h3>Sent reviews</h3>
 <div *ngIf="sentReviewsLength == 0">{{user.email}} has not sent any reviews yet</div>
 <div *ngFor="let review of (sentReviews | async)">
-    to {{review.receiver.email}}  <button mat-raised-button color="primary">Edit</button><button (click)="delete(review)" mat-raised-button color="warn">Delete</button>
+    <div *ngIf="review.receiver!=null">
+        to {{review.receiver.role.name}}: {{review.receiver.email}} <button mat-raised-button
+            color="primary">Edit</button><button (click)="delete(review)" mat-raised-button color="warn">Delete</button>
+    </div>
+    <div *ngIf="review.receiver==null">
+        to Project: {{review.assignment.name}} <button mat-raised-button color="primary">Edit</button><button
+            (click)="delete(review)" mat-raised-button color="warn">Delete</button>
+    </div>
 </div>
 
 <h3>Received reviews</h3>
 <div *ngIf="receivedReviewsLength == 0">{{user.email}} has not received any reviews yet</div>
 <div *ngFor="let review of (receivedReviews | async)">
-    from {{review.sender.email}}  <button mat-raised-button color="primary">Edit</button><button (click)="delete(review)" mat-raised-button color="warn">Delete</button>
+    from {{review.sender.role.name}}: {{review.sender.email}} <button mat-raised-button
+        color="primary">Edit</button><button (click)="delete(review)" mat-raised-button color="warn">Delete</button>
 </div>

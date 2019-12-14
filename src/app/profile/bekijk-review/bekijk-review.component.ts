@@ -67,7 +67,7 @@ export class BekijkReviewComponent implements OnInit {
     this._appService.addReview(this.reviewDto).subscribe(result => {
       alert("Review toegevoegd!");
       this.notificationDto.reviewID = result.reviewID;
-      if (result.assignmentID == 0) {
+      if (this.receiverID.type != "a") {
         //console.log(this.notificationDto);
         this._appService.PostNotification(this.notificationDto).subscribe(result => {
 
@@ -75,7 +75,7 @@ export class BekijkReviewComponent implements OnInit {
         }, error => {
           alert(error);
         });
-      } else if (result.assignmentID != 0) {
+      } else if (this.receiverID.type == "a") {
         this._appService.getAssignmentByID(result.assignmentID).subscribe(result => {
           console.log(result.applications);
           result.applications.forEach(application => {
