@@ -3,6 +3,7 @@ import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user.model';
 import * as jwt_decode from 'jwt-decode';
 import { UserWithPermissions } from 'src/app/models/user-with-permissions.model';
+import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -38,6 +39,7 @@ export class ProfileComponent implements OnInit {
       });
       this._appService.setUserPermissions(this.userWithPermissions);
     })
+  
   }
 
 }

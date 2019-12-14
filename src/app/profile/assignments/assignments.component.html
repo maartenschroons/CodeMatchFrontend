@@ -1,0 +1,102 @@
+<div *ngIf="assignmentsInProgress.length != 0">
+    <div class="row mt-4">
+        <div *ngFor="let a of assignmentsInProgress" class="col-lg-4 col-md-6 pb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{a.name}}
+                    </h4>
+                    <p class="card-text">{{a.description}}</p>
+                    <h6 class="card-title"> Tags</h6>
+                    <hr>
+                    <p class="card-text">
+                        <span *ngFor="let t of a.assignmentTags"
+                            class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-warning">
+                        {{a.status}}
+                    </div>
+                    
+                    <!-- <div *hasPermission="['update_assignment_status']">
+                        <small class="text-muted">Change the status:</small> <br>
+                        <button class="btn btn-success btn-sm mr-1">Completed</button>
+                        <button class="btn btn-warning btn-sm mr-1">InProgress</button>
+                        <button class="btn btn-danger btn-sm">Initialized</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="assignmentsComplete.length != 0">
+    <div class="row mt-4">
+        <div *ngFor="let a of assignmentsComplete" class="col-lg-4 col-md-6 pb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{a.name}}
+                    </h4>
+                    <p class="card-text">{{a.description}}</p>
+                    <h6 class="card-title"> Tags</h6>
+                    <hr>
+                    <p class="card-text">
+                        <span *ngFor="let t of a.assignmentTags"
+                            class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-warning">
+                        {{a.status}}
+                    </div>
+
+                    <!-- <div *hasPermission="['update_assignment_status']">
+                        <small class="text-muted">Change the status:</small> <br>
+                        <button class="btn btn-success btn-sm mr-1">Completed</button>
+                        <button class="btn btn-warning btn-sm mr-1">InProgress</button>
+                        <button class="btn btn-danger btn-sm">Initialized</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="assignmentsInitial.length != 0">
+    <div class="row mt-4">
+        <div *ngFor="let a of assignmentsInitial" class="col-lg-4 col-md-6 pb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{a.name}}
+                    </h4>
+                    <p class="card-text">{{a.description}}</p>
+                    <h6 class="card-title"> Tags</h6>
+                    <hr>
+                    <p class="card-text">
+                        <span *ngFor="let t of a.assignmentTags"
+                            class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="text-warning">
+                        {{a.status}}
+                    </div>
+
+                    <!-- <div *hasPermission="['update_assignment_status']">
+                        <small class="text-muted">Change the status:</small> <br>
+                        <button class="btn btn-success btn-sm mr-1">Completed</button>
+                        <button class="btn btn-warning btn-sm mr-1">InProgress</button>
+                        <button class="btn btn-danger btn-sm">Initialized</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from '../directives/directives.module';
+import { AssignmentsComponent } from './assignments/assignments.component';
+import { TagsComponent } from './tags/tags.component';
 
 
 
@@ -12,7 +14,9 @@ import { DirectivesModule } from '../directives/directives.module';
   declarations: [
     OverviewComponent,
     ProfileComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    AssignmentsComponent,
+    TagsComponent
   ],
   imports: [
     CommonModule,

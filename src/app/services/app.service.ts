@@ -16,6 +16,8 @@ import { Notification } from '../models/notification.model';
 import { Application } from '../models/application.model';
 import { NotificationDto } from '../models/notification-dto.model';
 import { Review } from '../models/review.model';
+import { MakerTag } from '../models/maker-tag.model';
+import { CompanyTag } from '../models/company-tag.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,12 @@ export class AppService {
   updateProfileAfterSave = this.updateProfileAfterSaveSubject.asObservable();
   setUpdateProfileAfterSave(update: boolean) {
     this.updateProfileAfterSaveSubject.next(update);
+  }
+
+  private userSubject = new BehaviorSubject(new User(null, '', '', '', '', null, null, null, null, null, null, null));
+  user = this.userSubject.asObservable();
+  setUser(user: User) {
+    this.userSubject.next(user);
   }
 
   getUserByIdAndRol(id: number) {
@@ -152,6 +160,22 @@ export class AppService {
   //Tags
   getAllTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>("https://localhost:5001/api/tags");
+  }
+
+  getAllTagsByMakerId(id: number): Observable<MakerTag[]> {
+    return this.http.get<MakerTag[]>("https://localhost:5001/api/MakerTags/Maker/" + id);
+  }
+
+  getAllTagsByCompanyId(id: number): Observable<CompanyTag[]> {
+    return this.http.get<CompanyTag[]>("https://localhost:5001/api/MakerTags/Maker/" + id);
+  }
+
+  getAllTagsWithoutByMakerId(id: number): Observable<Tag[]> {
+    return this.http.get<Tag[]>("https://localhost:5001/api/Tags/Maker/Without/" + id);
+  }
+
+  getAllTagsWithoutByCompanyId(id: number): Observable<Tag[]> {
+    return this.http.get<Tag[]>("https://localhost:5001/api/Tags/Company/Without/" + id);
   }
 
   //Application
