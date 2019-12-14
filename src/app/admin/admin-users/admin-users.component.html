@@ -4,6 +4,6 @@
     <button mat-raised-button color="primary" (click)="search(email.value)">Search</button>
     <hr>
     <div *ngFor="let user of (users | async)">
-       {{user.role}} | {{user.email}} <button mat-raised-button color="primary">Edit</button><button mat-raised-button color="warn">Delete</button><button mat-raised-button color="accent" (click)="showReview(user)">Show reviews</button>
+       {{user.role.name}} | {{user.email}} <button mat-raised-button color="primary">Edit</button><button mat-raised-button color="warn">Delete</button><button mat-raised-button color="accent" (click)="showReview(user)">Show reviews</button>
     </div>
 </div>

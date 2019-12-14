@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
       localStorage.setItem("token", result.token);
       
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/profile');
 
       let decodedToken = jwt_decode(localStorage.getItem('token'));
       let userId = decodedToken['UserID'];
