@@ -49,4 +49,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
+  toAddAssignment() {
+    this.router.navigateByUrl('/addAssignment');
+  }
 }

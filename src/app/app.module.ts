@@ -40,6 +40,7 @@ import { AdminAssignmentsComponent } from './admin/admin-assignments/admin-assig
 import { AdminReviewsComponent } from './admin/admin-reviews/admin-reviews.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { BekijkReviewComponent } from './profile/bekijk-review/bekijk-review.component';
+import { AddAssignmentComponent } from './assignment/add-assignment/add-assignment.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
   { path: 'detailAssignment', component: AssignmentDetailsComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'userReviewList', component: AdminReviewsComponent},
-  { path: 'bekijkReview', component: BekijkReviewComponent}
+  { path: 'bekijkReview', component: BekijkReviewComponent},
+  { path: 'addAssignment', component: AddAssignmentComponent}
 ];
 
 @NgModule({
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
     AdminComponent,
     AdminAssignmentsComponent,
     AdminReviewsComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    AddAssignmentComponent
   ],
   imports: [
     BrowserModule,

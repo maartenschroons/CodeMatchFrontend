@@ -8,13 +8,15 @@ import { OngoingAssignmentsComponent } from './company-dashboard/ongoing-assignm
 import { CompletedAssignmentsComponent } from './company-dashboard/completed-assignments/completed-assignments.component';
 import { MakerOngoingComponent } from './maker-dashboard/maker-ongoing/maker-ongoing.component';
 import { MakerCompletedComponent } from './maker-dashboard/maker-completed/maker-completed.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }

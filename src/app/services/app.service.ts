@@ -21,6 +21,7 @@ import { CompanyTag } from '../models/company-tag.model';
 import { MakerTagDTO } from '../models/maker-tag-dto.model';
 import { CompanyTagDTO } from '../models/company-tag-dto.model';
 import { ReviewDto } from '../models/review-dto.model';
+import { AssignmentTag } from '../models/assignment-tag.model';
 
 @Injectable({
   providedIn: 'root'
@@ -162,6 +163,10 @@ export class AppService {
     return this.http.get<Assignment[]>("https://localhost:5001/api/assignments/assignmentInitial");
   }
 
+  addAssignment(assignment: Assignment) {
+    return this.http.post<Assignment>("https://localhost:5001/api/assignments/", assignment);
+  }
+
   //Tags
   getAllTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>("https://localhost:5001/api/tags");
@@ -247,5 +252,20 @@ export class AppService {
 
   addReview(reviewDto: ReviewDto) {
     return this.http.post<ReviewDto>("https://localhost:5001/api/Reviews/", reviewDto);
+  }
+
+  //User
+  getUserById(id: number) {
+    return this.http.get<User>("https://localhost:5001/api/users/" + id);
+  }
+  
+  //AssignmentTag
+  addAssignmentTag(assignmentTag: AssignmentTag) {
+    return this.http.post<AssignmentTag>("https://localhost:5001/api/applications/" , assignmentTag);
+  }
+
+  addAssignmentTags(assignmentID: number, tagList: Tag[]) {
+    console.log(assignmentID);
+    return this.http.post<AssignmentTag>("https://localhost:5001/api/assignmentTags/addAssignmentTags?assignmentID=" + assignmentID , tagList);
   }
 }
