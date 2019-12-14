@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from '../directives/directives.module';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { TagsComponent } from './tags/tags.component';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -21,7 +22,8 @@ import { TagsComponent } from './tags/tags.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DirectivesModule
+    DirectivesModule,
+    NgbTooltipModule
   ]
 })
 export class ProfileModule { }

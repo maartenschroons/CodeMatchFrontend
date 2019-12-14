@@ -18,6 +18,8 @@ import { NotificationDto } from '../models/notification-dto.model';
 import { Review } from '../models/review.model';
 import { MakerTag } from '../models/maker-tag.model';
 import { CompanyTag } from '../models/company-tag.model';
+import { MakerTagDTO } from '../models/maker-tag-dto.model';
+import { CompanyTagDTO } from '../models/company-tag-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -167,7 +169,7 @@ export class AppService {
   }
 
   getAllTagsByCompanyId(id: number): Observable<CompanyTag[]> {
-    return this.http.get<CompanyTag[]>("https://localhost:5001/api/MakerTags/Maker/" + id);
+    return this.http.get<CompanyTag[]>("https://localhost:5001/api/CompanyTags/Company/" + id);
   }
 
   getAllTagsWithoutByMakerId(id: number): Observable<Tag[]> {
@@ -176,6 +178,22 @@ export class AppService {
 
   getAllTagsWithoutByCompanyId(id: number): Observable<Tag[]> {
     return this.http.get<Tag[]>("https://localhost:5001/api/Tags/Company/Without/" + id);
+  }
+
+  addMakerTag(makerTag: MakerTagDTO) {
+    return this.http.post<MakerTagDTO>("https://localhost:5001/api/MakerTags", makerTag);
+  }
+
+  addCompanyTag(companyTag: CompanyTagDTO) {
+    return this.http.post<CompanyTagDTO>("https://localhost:5001/api/CompanyTags" ,companyTag);
+  }
+
+  deleteMakerTag(makerId: number, tagId: number) {
+    return this.http.delete<MakerTag>("https://localhost:5001/api/MakerTags/" + makerId + "/" + tagId);
+  }
+
+  deleteCompanyTag(companyId: number, tagId: number) {
+    return this.http.delete<CompanyTag>("https://localhost:5001/api/CompanyTags/" + companyId + "/" + tagId);
   }
 
   //Application
