@@ -220,6 +220,25 @@ export class AppService {
   getAllReviewsByReceiver(id: number):Observable<Review[]>{
     return this.http.get<Review[]>("https://localhost:5001/api/Reviews/receiver/"+id);
   }
+  getAllAssignmentsAdmin(): Observable<Assignment[]> {
+    return this.http.get<Assignment[]>("https://localhost:5001/api/assignments");
+  }
+
+  deleteUser(id: number){
+    return this.http.delete<User>("https://localhost:5001/api/Users/"+id);
+  }
+
+  deleteReview(id: number){
+    return this.http.delete<Review>("https://localhost:5001/api/Reviews/"+id);
+  }
+
+  deleteAssignment(id: number){
+    return this.http.delete<Assignment>("https://localhost:5001/api/Assignments/"+id);
+  }
+
+  deleteMaker(id: number){
+    return this.http.delete<Assignment>("https://localhost:5001/api/Assignments/"+id);
+  }
 
   //Reviews
   GetReviewBySenderIdReceiverIdAssignmentId(reviewDto: ReviewDto): Observable<Review> {

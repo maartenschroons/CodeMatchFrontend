@@ -1,8 +1,8 @@
 <h3>Ongoing Assignments</h3>
 <div class="row">
     <div *ngFor="let a of (assignments | async)" class="col-lg-4 col-md-6 pb-4">
-        <div class="card h-100" (click)="bekijkAssignment(a)">
-            <div class="card-body">
+        <div class="card h-100" >
+            <div class="card-body" (click)="bekijkAssignment(a)">
                 <h4 class="card-title">
                     {{a.name}}
                 </h4>
@@ -14,7 +14,8 @@
                         class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
                 </p>
             </div>
+            <button mat-raised-button color="primary" (click)="complete(a)">Complete</button>
         </div>
-        <button (click)="complete(a)">Complete</button>
+        
     </div>
 </div>

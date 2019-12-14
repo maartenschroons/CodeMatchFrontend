@@ -36,7 +36,11 @@ export class AdminReviewsComponent implements OnInit {
     this.receivedReviews = this._appService.getAllReviewsByReceiver(this.user.userID);
     this.receivedReviews.subscribe(result => { this.receivedReviewsLength = result.length });
   }
+
   ngOnInit() {
   }
 
+  delete(review: Review){
+    this._appService.deleteReview(review.reviewID).subscribe(result =>{this.instantiateLists()});
+  }
 }

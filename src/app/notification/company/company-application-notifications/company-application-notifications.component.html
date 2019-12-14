@@ -3,14 +3,14 @@
 <div class="notification" *ngIf="notificationsLength == 0"> There are no open applications!</div>
 
 <div *ngFor="let notification of (notifications | async)" class="padding">
-    {{notification.application.maker.nickname}} has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
+    <button (click)="open(content,notification.sender,false)">{{notification.application.maker.nickname}}</button>  has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
 </div>
 
 <div class="notification" *ngIf="readNotificationsLength != 0"> Old applications</div>
 <div class="notification" *ngIf="readNotificationsLength == 0"> There are no old applications!</div>
 
 <div *ngFor="let notification of (readNotifications | async)" class="padding">
-    <button (click)="open(content,notification.sender)">{{notification.application.maker.nickname}}</button> has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
+    <button (click)="open(content,notification.sender,true)">{{notification.application.maker.nickname}}</button> has applied for your project {{notification.application.assignment.name}}.<button btn btn-primary (click)="accept(notification)">Accept</button><button btn btn-primary (click)="decline(notification)">Decline</button>
 </div>
 
 <ng-template #content let-modal>
@@ -20,14 +20,29 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" *ngIf="accepted">
             <form>
                 <div class="form-group">
                         <label>{{user.maker.firstname}} {{user.maker.lastname}}</label>
                     <hr>
-                    <label>Maker email: {{user.email}}</label>
+                    <label>Email: {{user.email}}</label>
                     <hr>
-                    <label>Maker phone number: {{user.phonenumber}}</label>
+                    <label>Phone number: {{user.phonenumber}}</label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-body" *ngIf="!accepted">
+            <form>
+                <div class="form-group">
+                    <label>Bio: {{user.biography}}</label>
+                    <hr>
+                    <label>Experience: {{user.maker.experience}}</label>
+                    <hr>
+                    <label>LinkedIn: <a href="http://{{user.maker.linkedIn}}">{{user.maker.linkedIn}}</a></label>
+                    <p class="card-text"><span class="font-weight-bold">Tags: </span>
+                        <span *ngFor="let t of user.maker.makerTags"
+                            class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
+                    </p>
                 </div>
             </form>
         </div>

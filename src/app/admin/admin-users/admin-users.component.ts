@@ -42,4 +42,10 @@ export class AdminUsersComponent implements OnInit {
     this.router.navigate(["userReviewList"]);
   }
 
+  delete(userID: number) {
+    this._appService.deleteUser(userID).subscribe(result => {
+     this.instantiateLists();
+    });
+  }
+
 }

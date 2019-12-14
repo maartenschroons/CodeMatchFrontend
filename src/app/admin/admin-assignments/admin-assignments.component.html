@@ -1,14 +1,14 @@
 <div class="container">
-        <p></p>
-        <input type="text" class="form-control" placeholder="Search on Name" name="name" id="name" #name>
-        <button mat-raised-button color="primary" (click)="search(name.value)">Search</button>
+    <p></p>
+    <input type="text" class="form-control" placeholder="Search on Name" name="name" id="name" #name>
+    <button mat-raised-button color="primary" (click)="search(name.value)">Search</button>
     <hr>
     <div class="row">
         <div *ngFor="let a of (assignments | async)" class="col-lg-4 col-md-6 pb-4">
-            <div class="card h-100" (click)="bekijkAssignment(a)">
-                <div class="card-body">
+            <div class="card h-100" >
+                <div class="card-body" (click)="bekijkAssignment(a)">
                     <h4 class="card-title">
-                        {{a.name}}
+                       {{a.status}} | {{a.name}} 
                     </h4>
                     <p class="card-text">{{a.description}}</p>
                     <h6 class="card-title"> Tags</h6>
@@ -18,7 +18,9 @@
                             class="card-text border border-dark rounded p-1 m-2">{{t.tag.name}}</span>
                     </p>
                 </div>
+                <button (click)="delete(a)" mat-raised-button color="warn">Delete</button>
             </div>
+            
         </div>
     </div>
 </div>

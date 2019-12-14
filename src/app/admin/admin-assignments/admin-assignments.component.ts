@@ -19,8 +19,8 @@ export class AdminAssignmentsComponent implements OnInit {
   }
 
   instantiateLists() {
-    this.assignments = this._appService.getAllAssignments();
-    this.assignmentFilter = this._appService.getAllAssignments();
+    this.assignments = this._appService.getAllAssignmentsAdmin();
+    this.assignmentFilter = this.assignments;
   }
 
   ngOnInit() {
@@ -38,6 +38,10 @@ export class AdminAssignmentsComponent implements OnInit {
     //console.log(assignment);
     this._appService.gekozenAssignment.next(assignment);
     this.router.navigate(["detailAssignment"]);
+ }
+
+ delete(a: Assignment){
+this._appService.deleteAssignment(a.assignmentID).subscribe(result =>{this.instantiateLists()});
  }
 
 }
