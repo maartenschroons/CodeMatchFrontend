@@ -299,7 +299,10 @@ export class AppService {
   }
 
   addAssignmentTags(assignmentID: number, tagList: Tag[]) {
-    console.log(assignmentID);
     return this.http.post<AssignmentTag>("https://localhost:5001/api/assignmentTags/addAssignmentTags?assignmentID=" + assignmentID, tagList);
+  }
+
+  addOrDeleteAssignmentTags(assignmentID: number, tagList: Tag[]) {
+    return this.http.post<AssignmentTag>("https://localhost:5001/api/assignmentTags/addOrDeleteAssignmentTags?assignmentID=" + assignmentID, tagList);
   }
 }
