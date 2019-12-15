@@ -12,7 +12,7 @@ import { CompanyReviewNotificationsComponent } from './company/company-review-no
 
 
 @NgModule({
-  declarations: [NotificationComponent, MakerComponent, CompanyComponent, MakerAssignmentNotificationsComponent, MakerApplicationNotificationsComponent, MakerReviewNotificationsComponent, CompanyApplicationNotificationsComponent, CompanyReviewNotificationsComponent],
+  declarations: [],
   imports: [
     CommonModule
   ]

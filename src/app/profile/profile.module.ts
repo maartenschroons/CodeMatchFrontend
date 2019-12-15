@@ -18,6 +18,15 @@ import { OngoingAssignmentsComponent } from '../dashboard/company-dashboard/ongo
 import { CompletedAssignmentsComponent } from '../dashboard/company-dashboard/completed-assignments/completed-assignments.component';
 import { MakerOngoingComponent } from '../dashboard/maker-dashboard/maker-ongoing/maker-ongoing.component';
 import { MakerCompletedComponent } from '../dashboard/maker-dashboard/maker-completed/maker-completed.component';
+import { SharedModule } from '../shared/shared.module';
+import { NotificationComponent } from '../notification/notification.component';
+import { MakerComponent } from '../notification/maker/maker.component';
+import { CompanyComponent } from '../notification/company/company.component';
+import { MakerAssignmentNotificationsComponent } from '../notification/maker/maker-assignment-notifications/maker-assignment-notifications.component';
+import { MakerApplicationNotificationsComponent } from '../notification/maker/maker-application-notifications/maker-application-notifications.component';
+import { MakerReviewNotificationsComponent } from '../notification/maker/maker-review-notifications/maker-review-notifications.component';
+import { CompanyApplicationNotificationsComponent } from '../notification/company/company-application-notifications/company-application-notifications.component';
+import { CompanyReviewNotificationsComponent } from '../notification/company/company-review-notifications/company-review-notifications.component';
 
 
 
@@ -29,13 +38,30 @@ import { MakerCompletedComponent } from '../dashboard/maker-dashboard/maker-comp
     AssignmentsComponent,
     TagsComponent,
     ReviewComponent,
-    BekijkReviewComponent,DashboardComponent, MakerDashboardComponent, CompanyDashboardComponent, InitialAssignmentsComponent, OngoingAssignmentsComponent, CompletedAssignmentsComponent, MakerOngoingComponent, MakerCompletedComponent
+    BekijkReviewComponent,
+    DashboardComponent,
+    MakerDashboardComponent,
+    CompanyDashboardComponent,
+    InitialAssignmentsComponent,
+    OngoingAssignmentsComponent,
+    CompletedAssignmentsComponent,
+    MakerOngoingComponent,
+    MakerCompletedComponent,
+    NotificationComponent,
+    MakerComponent,
+    CompanyComponent,
+    MakerAssignmentNotificationsComponent,
+    MakerApplicationNotificationsComponent,
+    MakerReviewNotificationsComponent,
+    CompanyApplicationNotificationsComponent,
+    CompanyReviewNotificationsComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     DirectivesModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    SharedModule
   ]
 })
 export class ProfileModule { }

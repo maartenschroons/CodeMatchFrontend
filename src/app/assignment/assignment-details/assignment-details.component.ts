@@ -15,8 +15,10 @@ export class AssignmentDetailsComponent implements OnInit {
   assignment: Assignment;
   applicationDto: ApplicationDto;
   makerID: number;
+  companyID: string;
   userID: string;
   alreadyApplied: boolean;
+  companyIsViewing: boolean;
   public now: Date = new Date();
   
 
@@ -24,12 +26,15 @@ export class AssignmentDetailsComponent implements OnInit {
     var decoded = jwt_decode(localStorage.getItem("token"));
     this.makerID = decoded["MakerID"];
     this.userID = decoded["UserID"];
+    this.companyID = decoded["CompanyID"];
+    if (this.companyID == "") {
+      this.companyIsViewing == true;
+    }
     this._appService.gekozenAssignment.subscribe(e=> {
       this.assignment = e;
-      //console.log(this.assignment);
       // Als er gerefresht wordt dan is de poll leeg -> stuur terug naar poll component
       if (this.assignment.assignmentID == 0) {
-        this.router.navigate(["searchAssignment"]);
+        this.router.navigate(["profile"]);
       }
   });
   setInterval(() => {
@@ -46,6 +51,10 @@ export class AssignmentDetailsComponent implements OnInit {
         this.alreadyApplied = false;
       }
     })
+  }
+
+  back() {
+    this.router.navigate(["profile"]);
   }
 
   applyForAssignment() {

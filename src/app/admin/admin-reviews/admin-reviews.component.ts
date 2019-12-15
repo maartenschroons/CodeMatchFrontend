@@ -45,7 +45,7 @@ export class AdminReviewsComponent implements OnInit {
   }
 
   update(review: Review) {
-    console.log(review);
+    //console.log(review);
     if (review.receiver != null) {
       this._appService.receiverID.next({receiverid: review.reviewID, name: review.receiver.email, type: "admin",description: review.description});  
     } else {

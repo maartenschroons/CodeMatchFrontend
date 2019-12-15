@@ -15,9 +15,9 @@
                             <div *ngIf="f.description.errors.required">Fill in a description</div>
                         </div>
                     </div>
-                    <p><button class="button button-info" color="primary" type="submit">Submit</button></p>
+                    <p><button class="btn btn-info" color="primary" type="submit">Submit</button></p>
                 </form>
-                <form *ngIf="receiverID.description" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                <form *ngIf="receiverID.description && receiverID.type!='admin'" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label>Description</label>
                         <textarea type="text" rows="5" readonly
@@ -34,7 +34,7 @@
                             <div *ngIf="f.description.errors.required">Fill in a description</div>
                         </div>
                     </div>
-                    <p><button class="button button-info" color="primary" type="submit">Update</button></p>
+                    <p><button class="btn btn-info" color="primary" type="submit">Update</button></p>
                 </form>
                 <!-- <p>{{reviewForm.value | json}}</p>  -->
             </div>
@@ -43,4 +43,5 @@
             </div>
         </div>
     </div>
+    <button type="button" class="btn btn-info mt-3" (click)="back()">Back</button>
 </div>

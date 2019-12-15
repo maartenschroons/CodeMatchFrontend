@@ -20,13 +20,11 @@
                                 <a mat-list-item routerLink="/" routerLinkActive="active"
                                         [routerLinkActiveOptions]="{ exact: true }">Home</a>
                                 <a mat-list-item routerLink="/profile" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{ exact: true }">Account</a>
-                                <a mat-list-item routerLink="/notification" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{ exact: true }">Notifications</a>
+                                        [routerLinkActiveOptions]="{ exact: true }">Account settings</a>
                                 <a mat-list-item routerLink="searchAssignment" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{ exact: true }">Assignments</a>
+                                        [routerLinkActiveOptions]="{ exact: true }" *hasPermission="['can_click_assignments_link']">Assignments</a>
                                 <a mat-list-item routerLink="admin" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{ exact: true }">Admin</a>
+                                        [routerLinkActiveOptions]="{ exact: true }" *hasPermission="['can_click_admin_link']">Admin</a>
                                 <a mat-list-item routerLinkActive="active" (click)="logOut()"
                                         [routerLinkActiveOptions]="{ exact: true }">Logout</a>
                         </ng-template>

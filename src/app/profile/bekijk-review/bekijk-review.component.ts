@@ -31,7 +31,7 @@ export class BekijkReviewComponent implements OnInit {
     });
     this._appService.receiverID.subscribe(e => {
       this.receiverID = e;
-      console.log(this.receiverID);
+      //console.log(this.receiverID);
 
       if (this.receiverID.receiverid == 0) {
         this.router.navigate(["profile"]);
@@ -53,6 +53,9 @@ export class BekijkReviewComponent implements OnInit {
   }
   get f() { return this.reviewForm.controls; }
 
+  back() {
+    this.router.navigate(["profile"]);
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -92,7 +95,7 @@ export class BekijkReviewComponent implements OnInit {
           });
         } else if (this.receiverID.type == "a") {
           this._appService.getAssignmentByID(result.assignmentID).subscribe(result => {
-            console.log(result.applications);
+            //console.log(result.applications);
             result.applications.forEach(application => {
               if (parseInt(this.userId) != application.maker.makerID && application.isAccepted) {
                 this.notificationDto.receiverID = application.maker.user.userID;

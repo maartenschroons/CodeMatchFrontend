@@ -17,6 +17,7 @@ export class AdminUsersComponent implements OnInit {
 
   constructor(private _appService: AppService, private router: Router) {
     this.instantiateLists();
+    this.users.subscribe(e => {console.log(e)});
   }
 
   instantiateLists() {
