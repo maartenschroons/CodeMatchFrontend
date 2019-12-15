@@ -44,4 +44,8 @@ export class AdminAssignmentsComponent implements OnInit {
     this._appService.deleteAssignment(a.assignmentID).subscribe(result => { this.instantiateLists() });
   }
 
+  modify(a: Assignment) {
+    localStorage.setItem("assignmentID", a.assignmentID.toString());
+    this.router.navigateByUrl("/editAssignment");
+  }
 }

@@ -3,7 +3,4 @@
     <input type="text" class="form-control" placeholder="Search on Email" name="email" id="email" #email>
     <button mat-raised-button color="primary" (click)="search(email.value)">Search</button>
     <hr>
-    <div *ngFor="let user of (users | async)">
-       {{user.role.name}} | {{user.email}} <button mat-raised-button color="primary">Edit</button><button (click)="delete(user.userID)" mat-raised-button color="warn">Delete</button><button mat-raised-button color="accent" (click)="showReview(user)">Show reviews</button>
-    </div>
 </div>

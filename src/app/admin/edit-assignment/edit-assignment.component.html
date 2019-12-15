@@ -1,0 +1,44 @@
+<div class="content container">
+    <div>
+        <h1 class="titel">Edit assignment:</h1>
+    </div>
+
+    <form [formGroup]="editAssignmentForm" (ngSubmit)="onSubmit()">
+        <div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center">
+            <div fxFlex="50%">
+
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Name" formControlName="name"
+                            [(ngModel)]="assignmentModel.name" type="text" name="name" />
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Description" formControlName="description" [(ngModel)]="assignmentModel.description"
+                            type="text" name="Description" />
+                    </mat-form-field>
+                </p>
+            </div>
+            <div fxFlex="50%">
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Street address" formControlName="streetAdress"
+                            [(ngModel)]="assignmentModel.streetAdress" type="text" name="StreetAdress" />
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="PostalCode" formControlName="postalCode"
+                            [(ngModel)]="assignmentModel.postalCode" type="text" name="PostalCode" />
+                    </mat-form-field>
+                </p>
+            </div>
+        </div>
+        <p>
+            <button [disabled]="!editAssignmentForm.valid" mat-raised-button color="primary"
+                type="submit">Submit</button>
+        </p>
+    </form>
+</div>

@@ -168,6 +168,10 @@ export class AppService {
     return this.http.post<Assignment>("https://localhost:5001/api/assignments/", assignment);
   }
 
+  getAssignment(id: number) {
+    return this.http.get<Assignment>("https://localhost:5001/api/assignments/" + id);
+  }
+
   //Tags
   getAllTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>("https://localhost:5001/api/tags");
