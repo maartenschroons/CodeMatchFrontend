@@ -8,9 +8,10 @@
                     <a class="nav-item nav-link active w-25" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
                         role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
                     <a class="nav-item nav-link w-25" id="nav-not-tab" data-toggle="tab" href="#nav-not" role="tab"
-                        aria-controls="nav-not" aria-selected="false" *hasPermission="['not_admin']"
-                        matBadge="{{notificationAmount}}" matBadgeSize="large" matBadgeColor="accent"
-                        matBadgePosition="after" matBadgeOverlap="true">Notifications</a>
+                        aria-controls="nav-not" aria-selected="false" *hasPermission="['not_admin']">
+                        <div matBadge="{{notificationAmount}}" matBadgeSize="large" matBadgeColor="accent"
+                            matBadgePosition="after" matBadgeOverlap="true">Notifications</div>
+                    </a>
                     <a class="nav-item nav-link w-25" id="nav-assignments-tab" data-toggle="tab" href="#nav-assignments"
                         role="tab" aria-controls="nav-assignments" aria-selected="false"
                         *hasPermission="['not_admin']">Assignments</a>
