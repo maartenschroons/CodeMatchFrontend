@@ -51,7 +51,7 @@ const appRoutes: Routes = [
   { path: 'userReviewList', component: AdminReviewsComponent},
   { path: 'bekijkReview', component: BekijkReviewComponent},
   { path: 'addAssignment', component: AddAssignmentComponent},
-  { path: 'editAssignment', component: EditAssignmentComponent}
+  { path: 'editAssignment', component: EditAssignmentComponent},
   { path: 'editUser', component: AdminEditUserComponent}
 ];
 
