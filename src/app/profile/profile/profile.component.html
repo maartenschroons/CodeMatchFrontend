@@ -42,7 +42,8 @@
                     <br>
                     <div *hasPermission="['read_maker_profile']">
                         <span class="h6">LinkedIn:</span> <br>
-                        {{user.maker.linkedIn}}
+                        <a href="https://{{user.maker.linkedIn}}">{{user.maker.linkedIn}}</a>
+                        
                     </div>
                     <div *hasPermission="['read_company_profile']">
                         <span class="h6">Address:</span> <br>
