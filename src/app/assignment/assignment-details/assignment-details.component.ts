@@ -26,13 +26,14 @@ export class AssignmentDetailsComponent implements OnInit {
     var decoded = jwt_decode(localStorage.getItem("token"));
     this.makerID = decoded["MakerID"];
     this.userID = decoded["UserID"];
-
+    this.role = decoded["role"];
     if (this.role == "Company") {
       this.companyIsViewing = true;
     }
     else{
       this.companyIsViewing = false;
     }
+    
 
     this._appService.gekozenAssignment.subscribe(e=> {
       this.assignment = e;
@@ -51,10 +52,9 @@ export class AssignmentDetailsComponent implements OnInit {
     this.assignment.applications.forEach(a => {
       if (a.makerID == this.makerID) {
         this.alreadyApplied = true;
-      } else {
-        this.alreadyApplied = false;
-      }
-    })
+      } 
+    });
+    console.log(this.alreadyApplied);
   }
 
   back() {
