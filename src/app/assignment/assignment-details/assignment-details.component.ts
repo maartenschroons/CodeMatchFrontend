@@ -17,6 +17,7 @@ export class AssignmentDetailsComponent implements OnInit {
   makerID: number;
   companyID: string;
   userID: string;
+  role:string;
   alreadyApplied: boolean;
   companyIsViewing: boolean;
   public now: Date = new Date();
@@ -27,8 +28,12 @@ export class AssignmentDetailsComponent implements OnInit {
     this.makerID = decoded["MakerID"];
     this.userID = decoded["UserID"];
     this.companyID = decoded["CompanyID"];
-    if (this.companyID == "") {
-      this.companyIsViewing == true;
+    this.role = decoded["role"];
+    if (this.role == "Company") {
+      this.companyIsViewing = true;
+    }
+    else{
+      this.companyIsViewing = false;
     }
     this._appService.gekozenAssignment.subscribe(e=> {
       this.assignment = e;
