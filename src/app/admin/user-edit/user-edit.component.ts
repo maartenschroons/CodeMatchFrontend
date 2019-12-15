@@ -1,29 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { AppService } from 'src/app/services/app.service';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/models/user.model';
-import * as jwt_decode from 'jwt-decode';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserWithPermissions } from 'src/app/models/user-with-permissions.model';
+import { AppService } from 'src/app/services/app.service';
 import { UserDTO } from 'src/app/models/user-dto.model';
 import { CompanyDTO } from 'src/app/models/company-dto.model';
 import { MakerDTO } from 'src/app/models/maker-dto.model';
 
 @Component({
-  selector: 'app-profile-edit',
-  templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.scss']
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.scss']
 })
-export class ProfileEditComponent implements OnInit {
+export class UserEditComponent implements OnInit {
+
 
   user: User = new User(null, '', '', '', '', null, null, null, null, null, null, null);
-  userId: number;
-  editUserForm: FormGroup;
   userWithPermissions: UserWithPermissions = new UserWithPermissions('', []);
+  editUserForm: FormGroup;
 
-  constructor(private _appService: AppService, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private _appService: AppService, private router: Router) { }
 
   ngOnInit() {
-
     this.editUserForm = this.fb.group({
       nickname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -38,18 +37,19 @@ export class ProfileEditComponent implements OnInit {
       biography: ['']
     })
 
-      this.decodeToken();
-      this.getUserAndFillForms();
+    this._appService.userIdForEdit.subscribe(result => {
+      if (result == 0) {
+        this.router.navigate(['admin']);
+      } else {
+        this.getUserAndFillForms(result);
+      }
+    })
   }
 
-  getUserAndFillForms() {
-    this._appService.getUserByIdAndRol(this.userId).subscribe(result => {
+  getUserAndFillForms(userID) {
+    this._appService.getUserByIdAndRol(userID).subscribe(result => {
       this.user = result;
-      console.log(result)
-      if (result.roleID == 3) {
-        this.fillAdminFormInfo();
-      }
-
+      console.log(result);
       if (this.user.companyID) {
         this.fillCompanyFormInfo();
       }
@@ -68,19 +68,6 @@ export class ProfileEditComponent implements OnInit {
       this.userWithPermissions.permission.push(x.permission.name);
     });
     this._appService.setUserPermissions(this.userWithPermissions);
-  }
-
-  decodeToken() {
-    let decodedToken = jwt_decode(localStorage.getItem('token'));
-    this.userId = decodedToken['UserID'];
-  }
-
-  fillAdminFormInfo() {
-    this.editUserForm.patchValue({
-      email: this.user.email,
-      phonenumber: this.user.phonenumber,
-      biography: this.user.biography
-    })
   }
 
   fillMakerFormInfo() {
@@ -111,25 +98,18 @@ export class ProfileEditComponent implements OnInit {
     let user = new UserDTO(this.user.userID, this.editUserForm.get('email').value, this.editUserForm.get('phonenumber').value, this.editUserForm.get('biography').value,
       this.user.role.roleID, this.user.makerID, this.user.companyID);
 
-    this._appService.updateUser(user.userID, user).subscribe(result => {
-      if (this.user.role.roleID == 3) {
-        this._appService.setUpdateProfileAfterSave(true);
-      }
-    });
+    this._appService.updateUser(user.userID, user).subscribe();
 
     if (this.user.companyID) {
       let company = new CompanyDTO(this.user.companyID, this.editUserForm.get('companyname').value, this.editUserForm.get('streetaddress').value, this.editUserForm.get('postalcode').value)
-      this._appService.updateCompany(company.companyID, company).subscribe(result => {
-        this._appService.setUpdateProfileAfterSave(true);
-      });
+      this._appService.updateCompany(company.companyID, company).subscribe();
     }
 
     if (this.user.makerID) {
       let maker = new MakerDTO(this.user.makerID, this.editUserForm.get('firstname').value, this.editUserForm.get('lastname').value, this.editUserForm.get('nickname').value,
         this.editUserForm.get('linkedin').value, this.editUserForm.get('experience').value, this.user.maker.dob)
-      this._appService.updateMaker(maker.makerID, maker).subscribe(result => {
-        this._appService.setUpdateProfileAfterSave(true);
-      });
+      this._appService.updateMaker(maker.makerID, maker).subscribe();
     }
   }
+
 }

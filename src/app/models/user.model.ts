@@ -18,7 +18,7 @@ export class User {
     receivedReviews: Observable<Review>;
     sendReviews: Observable<Review>;
 
-    constructor(userID: number, email: string, password: string, phonenumber: string, biography: string, role: Role, makerID: number, maker: Maker, companyID: number, company: Company, receivedReviews: Observable<Review>, sendReviews: Observable<Review>)
+    constructor(userID: number ,email: string, password: string, phonenumber: string, biography: string, role: Role, makerID: number, maker: Maker, companyID: number, company: Company, receivedReviews: Observable<Review>, sendReviews: Observable<Review>)
     {
         this.userID = userID;
         this.email = email;

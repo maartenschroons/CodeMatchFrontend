@@ -7,13 +7,16 @@
                         role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
 
                     <a class="nav-item nav-link w-25" id="nav-assignments-tab" data-toggle="tab" href="#nav-assignments"
-                        role="tab" aria-controls="nav-assignments" aria-selected="false">Assignments</a>
+                        role="tab" aria-controls="nav-assignments" aria-selected="false"
+                        *hasPermission="['not_admin']">Assignments</a>
 
                     <a class="nav-item nav-link w-25" id="nav-tags-tab" data-toggle="tab" href="#nav-tags" role="tab"
-                        aria-controls="nav-tags" aria-selected="false">Tags</a>
+                        aria-controls="nav-tags" aria-selected="false" *hasPermission="['not_admin']">Tags</a>
 
                     <a class="nav-item nav-link w-25" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews"
-                        role="tab" aria-controls="nav-reviews" aria-selected="false">Reviews</a>
+                        role="tab" aria-controls="nav-reviews" aria-selected="false"
+                        *hasPermission="['not_admin']">Reviews</a>
+
                 </div>
             </nav>
         </div>
@@ -24,17 +27,17 @@
             <app-profile></app-profile>
         </div>
 
-        <div class="tab-pane fade" id="nav-assignments" role="tabpanel" aria-labelledby="nav-assignments-tab">
+        <div class="tab-pane fade" id="nav-assignments" role="tabpanel" aria-labelledby="nav-assignments-tab" *hasPermission="['not_admin']">
             <app-dashboard></app-dashboard>
         </div>
 
-        <div class="tab-pane fade" id="nav-tags" role="tabpanel" aria-labelledby="nav-tags-tab">
+        <div class="tab-pane fade" id="nav-tags" role="tabpanel" aria-labelledby="nav-tags-tab" *hasPermission="['not_admin']">
             <app-tags></app-tags>
         </div>
 
-        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-tags-reviews">
+        <div class="tab-pane fade" id="nav-reviews" role="tabpanel" aria-labelledby="nav-tags-reviews" *hasPermission="['not_admin']">
             <app-review></app-review>
         </div>
-    </div>
 
+    </div>
 </div>

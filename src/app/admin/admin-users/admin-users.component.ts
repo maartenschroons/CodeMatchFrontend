@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
@@ -44,8 +44,13 @@ export class AdminUsersComponent implements OnInit {
 
   delete(userID: number) {
     this._appService.deleteUser(userID).subscribe(result => {
-     this.instantiateLists();
+      this.instantiateLists();
     });
+  }
+
+  editUser(userID: number) {
+    this._appService.setUserIdForEdit(userID);
+    this.router.navigate(['editUser']);
   }
 
 }

@@ -33,6 +33,10 @@ import { BekijkReviewComponent } from './profile/bekijk-review/bekijk-review.com
 import { AddAssignmentComponent } from './assignment/add-assignment/add-assignment.component';
 import { MakerRegisterComponent } from './register/maker-register/maker-register.component';
 import { CompanyRegisterComponent } from './register/company-register/company-register.component';
+import { AdminEditUserComponent} from './admin/admin-edit-user/admin-edit-user.component'
+import { DirectivesModule } from './directives/directives.module';
+import { UserEditComponent } from './admin/user-edit/user-edit.component';
+import { TagEditComponent } from './admin/tag-edit/tag-edit.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -45,7 +49,8 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'userReviewList', component: AdminReviewsComponent},
   { path: 'bekijkReview', component: BekijkReviewComponent},
-  { path: 'addAssignment', component: AddAssignmentComponent}
+  { path: 'addAssignment', component: AddAssignmentComponent},
+  { path: 'editUser', component: AdminEditUserComponent}
 ];
 
 @NgModule({
@@ -68,7 +73,10 @@ const appRoutes: Routes = [
     AdminUsersComponent,
     AddAssignmentComponent,
     MakerRegisterComponent,
-    CompanyRegisterComponent
+    CompanyRegisterComponent,
+    AdminEditUserComponent,
+    UserEditComponent,
+    TagEditComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +86,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     AssignmentModule,
     NgbModule,
+    DirectivesModule,
     RouterModule.forRoot(appRoutes, { enableTracing: false })
   ],
   providers: [{

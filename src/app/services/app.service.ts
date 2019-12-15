@@ -53,6 +53,18 @@ export class AppService {
     this.userSubject.next(user);
   }
 
+  private isAdminSubject = new BehaviorSubject(false);
+  isAdmin = this.isAdminSubject.asObservable();
+  setIsAdmin(update: boolean) {
+    this.isAdminSubject.next(update);
+  }
+
+  private userIdForEditSubject = new BehaviorSubject(0);
+  userIdForEdit = this.userIdForEditSubject.asObservable();
+  setUserIdForEdit(id: number) {
+    this.userIdForEditSubject.next(id);
+  }
+
   getUserByIdAndRol(id: number) {
     return this.http.get<any>("https://localhost:5001/api/Users/user/info/" + id)
   }
