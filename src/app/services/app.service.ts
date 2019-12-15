@@ -280,6 +280,10 @@ export class AppService {
     return this.http.post<ReviewDto>("https://localhost:5001/api/Reviews/", reviewDto);
   }
 
+  updateReview(id: number, review: Review) {
+    return this.http.put<Review>("https://localhost:5001/api/Reviews/" +  id, review);
+  }
+
   //User
   getUserById(id: number) {
     return this.http.get<User>("https://localhost:5001/api/users/" + id);
