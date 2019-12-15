@@ -44,6 +44,17 @@ export class AdminReviewsComponent implements OnInit {
   ngOnInit() {
   }
 
+  update(review: Review) {
+    console.log(review);
+    if (review.receiver != null) {
+      this._appService.receiverID.next({receiverid: review.reviewID, name: review.receiver.email, type: "admin",description: review.description});  
+    } else {
+      this._appService.receiverID.next({receiverid: review.reviewID, name: review.assignment.name, type: "admin",description: review.description});  
+    }
+      
+      this.router.navigate(["bekijkReview"]);  
+  }
+
   delete(review: Review){
     this._appService.deleteReview(review.reviewID).subscribe(result =>{this.instantiateLists()});
   }

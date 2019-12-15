@@ -1,34 +1,46 @@
 <div class="container">
-        <h1 class="my-4"></h1>
-        <div class="d-flex justify-content-start">
-            <div class="card text-start w-100">
-                <h3 class="card-header">
-                    <span class="font-weight-bold">Write a review about: {{receiverID.name}}</span>
-                </h3>
-                <div class="card-body">
-                    <form *ngIf="receiverID.description==''" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-                            <div  class="form-group">
-                                <label>Description</label>
-                                <textarea type="text" rows="5" formControlName="description" class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.description.errors}" ></textarea>
-                                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                                    <div *ngIf="f.description.errors.required">Fill in a description</div>
-                                </div>
-                            </div>
-                            <p><button class="button button-info" color="primary" type="submit">Submit</button></p>
-                        </form>
-                        <form *ngIf="receiverID.description" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
-                                <div  class="form-group">
-                                    <label>Description</label>
-                                    <textarea type="text" rows="5" readonly  class="form-control-plaintext border" >{{receiverID.description}}</textarea>
-                                    
-                                </div>
-                            </form>
-                    <!-- <p>{{reviewForm.value | json}}</p>  -->
-                </div>
-                <div class="card-footer text-muted">
-                    {{now | date:'dd-MMM-yyyy HH:mm'}}
-                </div>
+    <h1 class="my-4"></h1>
+    <div class="d-flex justify-content-start">
+        <div class="card text-start w-100">
+            <h3 class="card-header">
+                <span class="font-weight-bold">Write a review about: {{receiverID.name}}</span>
+            </h3>
+            <div class="card-body">
+                <form *ngIf="receiverID.description=='' && receiverID.type" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" rows="5" formControlName="description" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.description.errors}"></textarea>
+                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                            <div *ngIf="f.description.errors.required">Fill in a description</div>
+                        </div>
+                    </div>
+                    <p><button class="button button-info" color="primary" type="submit">Submit</button></p>
+                </form>
+                <form *ngIf="receiverID.description" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" rows="5" readonly
+                            class="form-control-plaintext border">{{receiverID.description}}</textarea>
+
+                    </div>
+                </form>
+                <form *ngIf="receiverID.type=='admin'" [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" rows="5" formControlName="description" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.description.errors}"></textarea>
+                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                            <div *ngIf="f.description.errors.required">Fill in a description</div>
+                        </div>
+                    </div>
+                    <p><button class="button button-info" color="primary" type="submit">Update</button></p>
+                </form>
+                <!-- <p>{{reviewForm.value | json}}</p>  -->
+            </div>
+            <div class="card-footer text-muted">
+                {{now | date:'dd-MMM-yyyy HH:mm'}}
             </div>
         </div>
     </div>
+</div>

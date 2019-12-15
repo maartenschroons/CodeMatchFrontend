@@ -3,4 +3,31 @@
     <input type="text" class="form-control" placeholder="Search on Email" name="email" id="email" #email>
     <button mat-raised-button color="primary" (click)="search(email.value)">Search</button>
     <hr>
+    <button  (click)="search(email.value)" class="btn btn-primary mt-2">Search</button>
+    <table class="table table-striped mt-2">
+        <thead>
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Reviews</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of (users | async)">
+                <td>
+                    {{user.email}}
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)="editUser(user.userID)">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="delete(user.userID)">Delete</button>
+                </td>
+                <td>
+                    <button class="btn btn-warning" (click)="showReview(user)">Show reviews</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

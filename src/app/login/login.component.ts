@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 import { AppService } from '../services/app.service';
 import { UserWithPermissions } from '../models/user-with-permissions.model';
+import { ProfileEditComponent } from '../profile/profile-edit/profile-edit.component';
 
 @Component({
   selector: 'app-login',
@@ -40,6 +41,12 @@ export class LoginComponent implements OnInit {
 
     this._appService.getUserByIdAndRol(userId).subscribe(result => {
       this._appService.setUser(result);
+
+      if (result.roleID == 3) {
+        this._appService.setIsAdmin(true);
+      } else {
+        this._appService.setIsAdmin(false);
+      }
       
       this.userWithPermissions.email = result.email;
       result.role.rolePermissions.forEach(x => {

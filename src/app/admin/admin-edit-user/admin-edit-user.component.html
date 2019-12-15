@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav>
+                <div class="nav nav-tabs text-center" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active w-25" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                        role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
+
+                    <a class="nav-item nav-link w-25" id="nav-tags-tab" data-toggle="tab" href="#nav-tags" role="tab"
+                        aria-controls="nav-tags" aria-selected="false" *hasPermission="['not_admin']">Tags</a>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <app-user-edit></app-user-edit>
+        </div>
+
+        <div class="tab-pane fade" id="nav-tags" role="tabpanel" aria-labelledby="nav-tags-tab">
+            <app-tag-edit></app-tag-edit>
+        </div>
+
+    </div>
+</div>

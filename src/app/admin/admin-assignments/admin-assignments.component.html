@@ -1,7 +1,7 @@
 <div class="container">
-    <p></p>
-    <input type="text" class="form-control" placeholder="Search on Name" name="name" id="name" #name>
-    <button mat-raised-button color="primary" (click)="search(name.value)">Search</button>
+        <p></p>
+        <input type="text" class="form-control" placeholder="Search on Name" name="name" id="name" #name>
+        <button  (click)="search(name.value)" class="mt-2 btn btn-primary">Search</button>
     <hr>
     <div class="row">
         <div *ngFor="let a of (assignments | async)" class="col-lg-4 col-md-6 pb-4">
