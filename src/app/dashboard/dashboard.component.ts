@@ -13,8 +13,7 @@ import { AppService } from '../services/app.service';
 })
 export class DashboardComponent implements OnInit {
   name: string;
-  notificationAmount: number;
-  messageAmount: number = 2;
+ 
   makerCheck: boolean;
   decoded;
   role:string;
@@ -35,7 +34,6 @@ export class DashboardComponent implements OnInit {
     }
     //console.log(this.decoded);
     this._appService.getUser(this.userID).subscribe(result => { this.name = result.email });
-    this._appService.GetNotificationsByReceiver(this.userID).subscribe(result => { this.notificationAmount = result.length });
   }
 
   ngOnInit() {
