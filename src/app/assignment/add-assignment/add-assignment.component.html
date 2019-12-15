@@ -34,14 +34,39 @@
                             [(ngModel)]="assignmentModel.postalCode" type="text" name="PostalCode" />
                     </mat-form-field>
                 </p>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Tags</mat-label>
-                        <mat-select  formControlName="tags" multiple [(ngModel)]="tagList">
-                          <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.name}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor="let tag of myTags" class="d-flex p-2 flex-column">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{tag.name}}
+                        </h5>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-danger btn-sm" (click)="removeTag(tag)">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="h4 mt-5">
+            Add existing tags
+        </div>
+        <hr>
+        <div class="row">
+            <div *ngFor="let tag of allTagsWithoutMine" class="d-flex p-1 flex-column">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{tag.name}}
+                        </h5>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success btn-sm" (click)="addTag(tag)">Add</button>
+                    </div>
+                </div>
             </div>
         </div>
         <p>

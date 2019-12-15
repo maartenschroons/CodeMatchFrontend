@@ -15,17 +15,17 @@ import { User } from 'src/app/models/user.model';
 export class AddAssignmentComponent implements OnInit {
 
   assignmentModel: Assignment = new Assignment(0, "", "", "", "", "", null, null, null, null);
-  tags: Tag[];
-  tagList: Tag[];
   decoded;
   userID: number;
   user: User;
+  myTags: Tag[] = [];
+  allTagsWithoutMine: Tag[] = [];
 
   constructor(private fb: FormBuilder, private appService: AppService, private router: Router) { }
 
   ngOnInit() {
     this.appService.getAllTags().subscribe(result => {
-      this.tags = result;
+      this.allTagsWithoutMine = result;
     });
 
     this.decoded = jwt_decode(localStorage.getItem("token"));
@@ -40,9 +40,18 @@ export class AddAssignmentComponent implements OnInit {
     name: ['', Validators.required],
     description: ['', Validators.required],
     streetAdress: ['', Validators.required],
-    postalCode: ['', Validators.required],
-    tags: ['', Validators.required]
+    postalCode: ['', Validators.required]
   });
+
+  removeTag(tag) {
+    this.myTags.splice(this.myTags.indexOf(tag), 1);
+    this.allTagsWithoutMine.push(tag);
+  }
+
+  addTag(tag) {
+    this.myTags.push(tag);
+    this.allTagsWithoutMine.splice(this.allTagsWithoutMine.indexOf(tag), 1);
+  }
 
   onSubmit()
   {
@@ -51,7 +60,7 @@ export class AddAssignmentComponent implements OnInit {
     this.assignmentModel.status = "Initial";
 
     this.appService.addAssignment(this.assignmentModel).subscribe(result => {
-      this.appService.addAssignmentTags(result.assignmentID, this.tagList).subscribe(result2 => {
+      this.appService.addAssignmentTags(result.assignmentID, this.myTags).subscribe(result2 => {
         this.router.navigateByUrl("/profile");
       });
     });
