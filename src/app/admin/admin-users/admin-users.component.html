@@ -1,9 +1,17 @@
 <div class="container">
     <p></p>
     <input type="text" class="form-control" placeholder="Search on Email" name="email" id="email" #email>
-    <button mat-raised-button color="primary" (click)="search(email.value)">Search</button>
-    <hr>
-    <button  (click)="search(email.value)" class="btn btn-primary mt-2">Search</button>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="float-left">
+                <button (click)="search(email.value)" class="btn btn-primary mt-2">Search</button>
+            </div>
+            <div class="float-right">
+                <button class="btn btn-success mt-2" routerLink="/register">Add user</button>
+            </div>
+        </div>
+    </div>
+
     <table class="table table-striped mt-2">
         <thead>
             <tr>
