@@ -20,9 +20,9 @@
                         class="card-text border border-dark rounded p-1 m-2">{{a.maker.firstname}}</span>
                 </p>
                 <hr *ngIf="assignment.status==='InProgress'">
-                <div *ngIf="!alreadyApplied">
+                <div *ngIf="!alreadyApplied && companyIsViewing">
                     <h5 class="card-title">Use the button below to apply for the assignment!</h5>
-                    <a class="btn btn-primary" (click)="applyForAssignment()">Apply!</a>
+                    <a class="btn btn-info" (click)="applyForAssignment()">Apply!</a>
                 </div>
                 <div *ngIf="alreadyApplied">
                         <h5 class="card-title">You already applied for this assignment</h5>
@@ -33,4 +33,5 @@
             </div>
         </div>
     </div>
+    <button type="button" class="btn btn-info mt-3" (click)="back()">Back</button>
 </div>

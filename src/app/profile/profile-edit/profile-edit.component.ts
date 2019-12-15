@@ -45,7 +45,7 @@ export class ProfileEditComponent implements OnInit {
   getUserAndFillForms() {
     this._appService.getUserByIdAndRol(this.userId).subscribe(result => {
       this.user = result;
-      console.log(result)
+      //console.log(result)
       if (result.roleID == 3) {
         this.fillAdminFormInfo();
       }

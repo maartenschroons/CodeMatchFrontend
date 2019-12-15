@@ -49,7 +49,7 @@ export class UserEditComponent implements OnInit {
   getUserAndFillForms(userID) {
     this._appService.getUserByIdAndRol(userID).subscribe(result => {
       this.user = result;
-      console.log(result);
+      //console.log(result);
       if (this.user.companyID) {
         this.fillCompanyFormInfo();
       }

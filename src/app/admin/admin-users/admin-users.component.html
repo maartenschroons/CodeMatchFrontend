@@ -14,7 +14,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of (users | async)">
+            <ng-container *ngFor="let user of (users | async)">
+            <tr *ngIf="user.role.name != 'Admin'">
                 <td>
                     {{user.email}}
                 </td>
@@ -28,6 +29,7 @@
                     <button class="btn btn-warning" (click)="showReview(user)">Show reviews</button>
                 </td>
             </tr>
+        </ng-container>
         </tbody>
     </table>
 </div>
