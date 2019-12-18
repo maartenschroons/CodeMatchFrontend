@@ -29,7 +29,7 @@ export class MakerDashboardComponent implements OnInit {
     this.userID = this.decoded["UserID"];
 
     this.assignments = this._appService.getAllInProgressAssignmentsByMaker(this.makerID);
-    this._appService.getAllInProgressAssignmentsByMaker(this.makerID).subscribe(result => { this.assignmentsLength = result.length; console.log(result) });
+    this._appService.getAllInProgressAssignmentsByMaker(this.makerID).subscribe(result => { this.assignmentsLength = result.length});
     this.appliedassignments = this._appService.getAllCompletedAssignmentsByMaker(this.makerID);
     this._appService.getAllCompletedAssignmentsByMaker(this.makerID).subscribe(result => { this.appliedassignmentsLength = result.length })
 

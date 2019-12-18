@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this._authenticateService.authenticate(this.login).subscribe(result => {
-      console.log(result.token);
+      
       this._authenticateService.isLoggedin.next(result.token ? true : false);
-      console.log(this._authenticateService.isLoggedin.value);
+     
       localStorage.setItem("token", result.token);
       
       this.router.navigateByUrl('/profile');

@@ -49,10 +49,10 @@ export class CompanyRegisterComponent implements OnInit {
         this.appService.addCompany(this.modelCompany).subscribe(result => {
           this.modelUser.company = result;
           this.modelUser.companyID = result.companyID;
-          
+
           this.appService.getCompanyRole().subscribe(result2 => {
             this.modelUser.role = result2;
-            console.log(this.modelUser);
+
           });
 
           this.appService.addUser(this.modelUser).subscribe(result => {

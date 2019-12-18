@@ -23,7 +23,7 @@ export class MakerOngoingComponent implements OnInit {
   instantiateLists() {
     this.decoded = jwt_decode(localStorage.getItem("token"));
     this.makerID = this.decoded["MakerID"];
-    console.log(this.makerID);
+   
     this.assignments = this._appService.getAllInProgressAssignmentsByMaker(this.makerID);
     this.assignments.subscribe(result => { this.assignmentsLength = result.length});
   }

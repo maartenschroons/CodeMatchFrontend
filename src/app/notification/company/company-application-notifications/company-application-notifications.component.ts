@@ -86,7 +86,7 @@ export class CompanyApplicationNotificationsComponent implements OnInit {
   open(content, user: User, accept:boolean) {
     this.accepted = accept;
     this.user = user;
-    console.log(user.maker.makerTags);
+    
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
