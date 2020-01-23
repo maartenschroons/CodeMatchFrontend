@@ -52,11 +52,13 @@ export class CompanyRegisterComponent implements OnInit {
 
           this.appService.getCompanyRole().subscribe(result2 => {
             this.modelUser.role = result2;
-
-          });
-
-          this.appService.addUser(this.modelUser).subscribe(result => {
-            this.router.navigateByUrl("/login");
+            this.appService.addUser(this.modelUser).subscribe(result => {
+              if (localStorage.getItem("token")) {
+                this.router.navigate(["/profile"]);
+              } else {
+                this.router.navigateByUrl("/login");
+              }
+            });
           });
         })
       }

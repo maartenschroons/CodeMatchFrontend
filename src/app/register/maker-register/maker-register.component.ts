@@ -57,11 +57,18 @@ export class MakerRegisterComponent implements OnInit {
           
           this.appService.getMakerRole().subscribe(result2 => {
             this.modelUser.role = result2;
-          });
 
-          this.appService.addUser(this.modelUser).subscribe(result3 => {
-            this.router.navigateByUrl("/login");
+            this.appService.addUser(this.modelUser).subscribe(result3 => {
+              
+              if (localStorage.getItem("token")) {
+                this.router.navigate(["/profile"]);
+              } else {
+                this.router.navigateByUrl("/login");
+              }
+
+            });
           });
+          
         })
       }
     });

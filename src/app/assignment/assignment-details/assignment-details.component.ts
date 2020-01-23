@@ -20,14 +20,12 @@ export class AssignmentDetailsComponent implements OnInit {
   role:string;
   alreadyApplied: boolean;
   companyIsViewing: boolean;
-  public now: Date = new Date();
-  
+  public now: Date = new Date();  
 
   constructor(private _appService: AppService, private router: Router) {
     var decoded = jwt_decode(localStorage.getItem("token"));
     this.makerID = decoded["MakerID"];
     this.userID = decoded["UserID"];
-    this.companyID = decoded["CompanyID"];
     this.role = decoded["role"];
     if (this.role == "Company") {
       this.companyIsViewing = true;
@@ -35,6 +33,8 @@ export class AssignmentDetailsComponent implements OnInit {
     else{
       this.companyIsViewing = false;
     }
+    
+
     this._appService.gekozenAssignment.subscribe(e=> {
       this.assignment = e;
       // Als er gerefresht wordt dan is de poll leeg -> stuur terug naar poll component
@@ -52,10 +52,9 @@ export class AssignmentDetailsComponent implements OnInit {
     this.assignment.applications.forEach(a => {
       if (a.makerID == this.makerID) {
         this.alreadyApplied = true;
-      } else {
-        this.alreadyApplied = false;
-      }
-    })
+      } 
+    });
+    console.log(this.alreadyApplied);
   }
 
   back() {
